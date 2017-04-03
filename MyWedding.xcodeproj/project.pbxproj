@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B13F2ADB1E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B13F2AD71E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m */; };
+		B13F2ADC1E92A41D00F5EBB1 /* MBXPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B13F2ADA1E92A41D00F5EBB1 /* MBXPageViewController.m */; };
+		B13F2ADE1E92AA8700F5EBB1 /* Natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B13F2ADD1E92AA8700F5EBB1 /* Natural.jpg */; };
+		B14336B81E90C94F00A0D7A1 /* UpcomingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B14336B71E90C94F00A0D7A1 /* UpcomingView.m */; };
+		B14336BB1E90C96B00A0D7A1 /* ServicesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B14336BA1E90C96B00A0D7A1 /* ServicesView.m */; };
+		B14336BE1E90C97F00A0D7A1 /* MeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B14336BD1E90C97F00A0D7A1 /* MeView.m */; };
 		B16A22851E8F753D00F0E3B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B16A22841E8F753D00F0E3B3 /* main.m */; };
 		B16A22881E8F753D00F0E3B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B16A22871E8F753D00F0E3B3 /* AppDelegate.m */; };
-		B16A228B1E8F753E00F0E3B3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B16A228A1E8F753E00F0E3B3 /* ViewController.m */; };
+		B16A228B1E8F753E00F0E3B3 /* TodayView.m in Sources */ = {isa = PBXBuildFile; fileRef = B16A228A1E8F753E00F0E3B3 /* TodayView.m */; };
 		B16A228E1E8F753E00F0E3B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B16A228C1E8F753E00F0E3B3 /* Main.storyboard */; };
 		B16A22901E8F753E00F0E3B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B16A228F1E8F753E00F0E3B3 /* Assets.xcassets */; };
 		B16A22931E8F753E00F0E3B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B16A22911E8F753E00F0E3B3 /* LaunchScreen.storyboard */; };
@@ -71,12 +77,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B13F2AD61E92A41D00F5EBB1 /* MBXFreeButtonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXFreeButtonsViewController.h; sourceTree = "<group>"; };
+		B13F2AD71E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXFreeButtonsViewController.m; sourceTree = "<group>"; };
+		B13F2AD91E92A41D00F5EBB1 /* MBXPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXPageViewController.h; sourceTree = "<group>"; };
+		B13F2ADA1E92A41D00F5EBB1 /* MBXPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXPageViewController.m; sourceTree = "<group>"; };
+		B13F2ADD1E92AA8700F5EBB1 /* Natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Natural.jpg; sourceTree = "<group>"; };
+		B14336B61E90C94F00A0D7A1 /* UpcomingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingView.h; sourceTree = "<group>"; };
+		B14336B71E90C94F00A0D7A1 /* UpcomingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingView.m; sourceTree = "<group>"; };
+		B14336B91E90C96B00A0D7A1 /* ServicesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesView.h; sourceTree = "<group>"; };
+		B14336BA1E90C96B00A0D7A1 /* ServicesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServicesView.m; sourceTree = "<group>"; };
+		B14336BC1E90C97F00A0D7A1 /* MeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeView.h; sourceTree = "<group>"; };
+		B14336BD1E90C97F00A0D7A1 /* MeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeView.m; sourceTree = "<group>"; };
 		B16A22801E8F753D00F0E3B3 /* MyWedding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWedding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B16A22841E8F753D00F0E3B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B16A22861E8F753D00F0E3B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B16A22871E8F753D00F0E3B3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		B16A22891E8F753D00F0E3B3 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		B16A228A1E8F753E00F0E3B3 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B16A22891E8F753D00F0E3B3 /* TodayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayView.h; sourceTree = "<group>"; };
+		B16A228A1E8F753E00F0E3B3 /* TodayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayView.m; sourceTree = "<group>"; };
 		B16A228D1E8F753E00F0E3B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B16A228F1E8F753E00F0E3B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B16A22921E8F753E00F0E3B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -209,9 +226,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B13F2AD51E92A41D00F5EBB1 /* FreeButtonsDemo */ = {
+			isa = PBXGroup;
+			children = (
+				B13F2AD61E92A41D00F5EBB1 /* MBXFreeButtonsViewController.h */,
+				B13F2AD71E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m */,
+			);
+			path = FreeButtonsDemo;
+			sourceTree = "<group>";
+		};
+		B13F2AD81E92A41D00F5EBB1 /* MBXPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				B13F2AD91E92A41D00F5EBB1 /* MBXPageViewController.h */,
+				B13F2ADA1E92A41D00F5EBB1 /* MBXPageViewController.m */,
+			);
+			path = MBXPageViewController;
+			sourceTree = "<group>";
+		};
 		B16A22771E8F753D00F0E3B3 = {
 			isa = PBXGroup;
 			children = (
+				B13F2AD51E92A41D00F5EBB1 /* FreeButtonsDemo */,
+				B13F2AD81E92A41D00F5EBB1 /* MBXPageViewController */,
 				B16A22821E8F753D00F0E3B3 /* MyWedding */,
 				B16A22811E8F753D00F0E3B3 /* Products */,
 			);
@@ -228,10 +265,17 @@
 		B16A22821E8F753D00F0E3B3 /* MyWedding */ = {
 			isa = PBXGroup;
 			children = (
+				B13F2ADD1E92AA8700F5EBB1 /* Natural.jpg */,
 				B16A22861E8F753D00F0E3B3 /* AppDelegate.h */,
 				B16A22871E8F753D00F0E3B3 /* AppDelegate.m */,
-				B16A22891E8F753D00F0E3B3 /* ViewController.h */,
-				B16A228A1E8F753E00F0E3B3 /* ViewController.m */,
+				B16A22891E8F753D00F0E3B3 /* TodayView.h */,
+				B16A228A1E8F753E00F0E3B3 /* TodayView.m */,
+				B14336B61E90C94F00A0D7A1 /* UpcomingView.h */,
+				B14336B71E90C94F00A0D7A1 /* UpcomingView.m */,
+				B14336B91E90C96B00A0D7A1 /* ServicesView.h */,
+				B14336BA1E90C96B00A0D7A1 /* ServicesView.m */,
+				B14336BC1E90C97F00A0D7A1 /* MeView.h */,
+				B14336BD1E90C97F00A0D7A1 /* MeView.m */,
 				B16A228C1E8F753E00F0E3B3 /* Main.storyboard */,
 				B16A228F1E8F753E00F0E3B3 /* Assets.xcassets */,
 				B16A22911E8F753E00F0E3B3 /* LaunchScreen.storyboard */,
@@ -530,6 +574,7 @@
 				B16A23F61E8F75C200F0E3B3 /* KVNProgressView.xib in Resources */,
 				B16A22901E8F753E00F0E3B3 /* Assets.xcassets in Resources */,
 				B16A23F01E8F75C200F0E3B3 /* IQKeyboardManager.bundle in Resources */,
+				B13F2ADE1E92AA8700F5EBB1 /* Natural.jpg in Resources */,
 				B16A228E1E8F753E00F0E3B3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,11 +589,12 @@
 				B16A23DA1E8F75C200F0E3B3 /* AFURLSessionManager.m in Sources */,
 				B16A24001E8F75C200F0E3B3 /* UIButton+WebCache.m in Sources */,
 				B16A23E31E8F75C200F0E3B3 /* IQUIScrollView+Additions.m in Sources */,
-				B16A228B1E8F753E00F0E3B3 /* ViewController.m in Sources */,
+				B16A228B1E8F753E00F0E3B3 /* TodayView.m in Sources */,
 				B16A23DD1E8F75C200F0E3B3 /* UIButton+AFNetworking.m in Sources */,
 				B16A23E51E8F75C200F0E3B3 /* IQUIView+Hierarchy.m in Sources */,
 				B16A22881E8F753D00F0E3B3 /* AppDelegate.m in Sources */,
 				B16A23EB1E8F75C200F0E3B3 /* IQBarButtonItem.m in Sources */,
+				B13F2ADB1E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m in Sources */,
 				B16A23F91E8F75C200F0E3B3 /* SDImageCache.m in Sources */,
 				B16A23F11E8F75C200F0E3B3 /* UIColor+KVNContrast.m in Sources */,
 				B16A23F81E8F75C200F0E3B3 /* NSData+ImageContentType.m in Sources */,
@@ -584,15 +630,19 @@
 				B16A23E11E8F75C200F0E3B3 /* UIWebView+AFNetworking.m in Sources */,
 				B16A23FC1E8F75C200F0E3B3 /* SDWebImageDownloader.m in Sources */,
 				B16A23EC1E8F75C200F0E3B3 /* IQPreviousNextView.m in Sources */,
+				B14336BE1E90C97F00A0D7A1 /* MeView.m in Sources */,
 				B16A23E41E8F75C200F0E3B3 /* IQUITextFieldView+Additions.m in Sources */,
 				B16A23D31E8F75C200F0E3B3 /* AFImageDownloader.m in Sources */,
 				B16A23F21E8F75C200F0E3B3 /* UIImage+KVNEmpty.m in Sources */,
 				B16A23FF1E8F75C200F0E3B3 /* SDWebImagePrefetcher.m in Sources */,
+				B13F2ADC1E92A41D00F5EBB1 /* MBXPageViewController.m in Sources */,
 				B16A23E81E8F75C200F0E3B3 /* IQKeyboardManager.m in Sources */,
 				B16A23E71E8F75C200F0E3B3 /* IQUIWindow+Hierarchy.m in Sources */,
+				B14336B81E90C94F00A0D7A1 /* UpcomingView.m in Sources */,
 				B16A23E91E8F75C200F0E3B3 /* IQKeyboardReturnKeyHandler.m in Sources */,
 				B16A23EE1E8F75C200F0E3B3 /* IQToolbar.m in Sources */,
 				B16A23D61E8F75C200F0E3B3 /* AFSecurityPolicy.m in Sources */,
+				B14336BB1E90C96B00A0D7A1 /* ServicesView.m in Sources */,
 				B16A24051E8F75C200F0E3B3 /* UIView+WebCacheOperation.m in Sources */,
 				B16A23D91E8F75C200F0E3B3 /* AFURLResponseSerialization.m in Sources */,
 				B16A23DB1E8F75C200F0E3B3 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -753,6 +803,7 @@
 				B16A22991E8F753E00F0E3B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
