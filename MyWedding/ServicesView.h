@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ServicesView : UIViewController
+@interface ServicesView : UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
+{
+    NSMutableArray *ImageNameSection;
+    NSMutableArray *TitleNameSection;
+}
 
 @end

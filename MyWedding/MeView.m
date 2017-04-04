@@ -13,10 +13,19 @@
 @end
 
 @implementation MeView
+@synthesize FirstName_TXT,MobileNo_TXT,MiddleName_TXT,LastName_TXT,Email_TXT;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    
+    FirstName_TXT.text=@"Abdul";
+    MiddleName_TXT.text=@"Rehman";
+    LastName_TXT.text=@"Mohamed";
+    MobileNo_TXT.text=@"00974 12345678";
+    Email_TXT.text=@"user@domain.com";
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +33,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

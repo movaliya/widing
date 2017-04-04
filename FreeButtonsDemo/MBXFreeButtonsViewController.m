@@ -12,6 +12,7 @@
 #import "UpcomingView.h"
 #import "ServicesView.h"
 #import "MeView.h"
+#import "SettingView.h"
 
 @interface MBXFreeButtonsViewController () <MBXPageControllerDataSource>
 
@@ -107,6 +108,12 @@
     
     // The order matters.
     return @[Todayvcr,upcomvcr, servicevcr,mevcr];
+}
+- (IBAction)SettingBtn_Action:(id)sender
+{
+    NSLog(@"setting btn click");
+    SettingView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SettingView"];
+    [self.navigationController pushViewController:vcr animated:YES];
 }
 
 @end

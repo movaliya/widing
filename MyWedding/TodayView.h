@@ -11,7 +11,9 @@
 @interface TodayView : UIViewController
 {
     
+   
 }
+@property (weak, nonatomic) IBOutlet UITableView *TodayTableView;
 
 
 @end
