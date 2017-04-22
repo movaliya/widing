@@ -23,6 +23,7 @@
     PopUpView.hidden=YES;
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self getCoutryCode];
     
 
     // Do any additional setup after loading the view.
@@ -36,6 +37,10 @@
         //[self ShowPOPUP];
         
         [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Mobile Number" delegate:nil];
+    }
+   else if (CountryCodeBTN.titleLabel.text.length == 0)
+   {
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Country Code." delegate:nil];
     }
     else
     {
@@ -65,8 +70,8 @@
     
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
-    [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
-    [dictParams setObject:@"99"  forKey:@"country_id"];
+    //[dictParams setObject:@"application/json"  forKey:@"Content-Type"];
+    [dictParams setObject:CountryCodeId  forKey:@"country_id"];
     [dictParams setObject:MobileTXT.text  forKey:@"mobile"];
     [dictParams setObject:PasswordTXT.text  forKey:@"password"];
     [dictParams setObject:DEVICETOKEN  forKey:@"device_token"];
@@ -78,7 +83,7 @@
 }
 - (void)handleSIGNINResponse:(NSDictionary*)response
 {
-    NSLog(@"Respose==%@",response);
+    NSLog(@"login Respose==%@",response);
     
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
@@ -109,15 +114,90 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)getCoutryCode
+{
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",GetCountryCodeURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleCountryCodeResponse:response];
+     }];
+    
 }
-*/
+- (void)handleCountryCodeResponse:(NSDictionary*)response
+{
+    NSLog(@"Respose==%@",response);
+    
+    if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
+    {
+        //***************************Local Device country Code Take******************
+        NSLocale *countryLocale = [NSLocale currentLocale];
+        NSString *countryCode = [countryLocale objectForKey:NSLocaleCountryCode];
+        NSString *country = [countryLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
+        //****************************************************************************
+        CountryCodeDATA=[response valueForKey:@"DATA"];
+        
+        NSArray *arrayWithCountryname = [CountryCodeDATA valueForKey:@"name"];
+        NSUInteger index = [arrayWithCountryname indexOfObject:country];
+        
+       // NSLog(@"index=%lu",(unsigned long)index);
+       // NSLog(@"code=%@",[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:index]);
+        
+        [CountryCodeBTN setTitle:[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:index] forState:UIControlStateNormal];
+        CountryCodeId=[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:index];
+        
+        [popupTBL reloadData];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
+    
+}
+#pragma mark UITableView delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return CountryCodeDATA.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 25.0f;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *v = [UIView new];
+    [v setBackgroundColor:[UIColor clearColor]];
+    return v;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell.
+    cell.textLabel.text = [[CountryCodeDATA valueForKey:@"name"] objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [CountryCodeBTN setTitle:[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    CountryCodeId=[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:indexPath.row];
+   PopUpView.hidden=YES;
+}
 
 - (IBAction)CountryBTN_Click:(id)sender
 {
