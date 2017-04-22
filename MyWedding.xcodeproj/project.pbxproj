@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		530AA63B1EA89C15005B527A /* LogInVIEW.m in Sources */ = {isa = PBXBuildFile; fileRef = 530AA63A1EA89C15005B527A /* LogInVIEW.m */; };
 		530AA63E1EA89CE5005B527A /* RegistrationVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 530AA63D1EA89CE5005B527A /* RegistrationVW.m */; };
-		530AA6401EA89E2D005B527A /* MainLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 530AA63F1EA89E2D005B527A /* MainLogo.png */; };
 		530AA6441EA8DBC3005B527A /* CommonWS.m in Sources */ = {isa = PBXBuildFile; fileRef = 530AA6431EA8DBC3005B527A /* CommonWS.m */; };
 		530AA6471EA901D9005B527A /* MobileVerification.m in Sources */ = {isa = PBXBuildFile; fileRef = 530AA6461EA901D9005B527A /* MobileVerification.m */; };
 		530AA64A1EA902F8005B527A /* ForgotPasswordVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 530AA6491EA902F8005B527A /* ForgotPasswordVW.m */; };
@@ -104,7 +103,6 @@
 		530AA63A1EA89C15005B527A /* LogInVIEW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogInVIEW.m; sourceTree = "<group>"; };
 		530AA63C1EA89CE5005B527A /* RegistrationVW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegistrationVW.h; sourceTree = "<group>"; };
 		530AA63D1EA89CE5005B527A /* RegistrationVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegistrationVW.m; sourceTree = "<group>"; };
-		530AA63F1EA89E2D005B527A /* MainLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainLogo.png; sourceTree = "<group>"; };
 		530AA6421EA8DBC3005B527A /* CommonWS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonWS.h; sourceTree = "<group>"; };
 		530AA6431EA8DBC3005B527A /* CommonWS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonWS.m; sourceTree = "<group>"; };
 		530AA6451EA901D9005B527A /* MobileVerification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileVerification.h; sourceTree = "<group>"; };
@@ -364,7 +362,6 @@
 		530BD11E1E937D7A00DEC9DE /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				530AA63F1EA89E2D005B527A /* MainLogo.png */,
 				530BD1301E93C95000DEC9DE /* Settingrectangle.png */,
 				B13F2ADD1E92AA8700F5EBB1 /* Natural.jpg */,
 				530BD10D1E93609600DEC9DE /* 1.png */,
@@ -733,7 +730,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B16A22931E8F753E00F0E3B3 /* LaunchScreen.storyboard in Resources */,
-				530AA6401EA89E2D005B527A /* MainLogo.png in Resources */,
 				530BD10A1E935E3600DEC9DE /* ServiceListCELL.xib in Resources */,
 				B16A23F61E8F75C200F0E3B3 /* KVNProgressView.xib in Resources */,
 				530BD11D1E93753C00DEC9DE /* ServiceDetailCELL.xib in Resources */,
