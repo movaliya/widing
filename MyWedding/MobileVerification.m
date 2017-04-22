@@ -11,7 +11,9 @@
 #import "RegistrationVW.h"
 
 @interface MobileVerification ()
-
+{
+    
+}
 @end
 
 @implementation MobileVerification

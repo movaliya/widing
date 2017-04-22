@@ -32,7 +32,6 @@
 		53672F911EAB289800B38159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53672F901EAB289800B38159 /* Main.storyboard */; };
 		B13F2ADB1E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B13F2AD71E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m */; };
 		B13F2ADC1E92A41D00F5EBB1 /* MBXPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B13F2ADA1E92A41D00F5EBB1 /* MBXPageViewController.m */; };
-		B13F2ADE1E92AA8700F5EBB1 /* Natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B13F2ADD1E92AA8700F5EBB1 /* Natural.jpg */; };
 		B14336B81E90C94F00A0D7A1 /* UpcomingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B14336B71E90C94F00A0D7A1 /* UpcomingView.m */; };
 		B14336BB1E90C96B00A0D7A1 /* ServicesView.m in Sources */ = {isa = PBXBuildFile; fileRef = B14336BA1E90C96B00A0D7A1 /* ServicesView.m */; };
 		B14336BE1E90C97F00A0D7A1 /* MeView.m in Sources */ = {isa = PBXBuildFile; fileRef = B14336BD1E90C97F00A0D7A1 /* MeView.m */; };
@@ -140,7 +139,6 @@
 		B13F2AD71E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXFreeButtonsViewController.m; sourceTree = "<group>"; };
 		B13F2AD91E92A41D00F5EBB1 /* MBXPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXPageViewController.h; sourceTree = "<group>"; };
 		B13F2ADA1E92A41D00F5EBB1 /* MBXPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXPageViewController.m; sourceTree = "<group>"; };
-		B13F2ADD1E92AA8700F5EBB1 /* Natural.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Natural.jpg; sourceTree = "<group>"; };
 		B14336B61E90C94F00A0D7A1 /* UpcomingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingView.h; sourceTree = "<group>"; };
 		B14336B71E90C94F00A0D7A1 /* UpcomingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingView.m; sourceTree = "<group>"; };
 		B14336B91E90C96B00A0D7A1 /* ServicesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServicesView.h; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 			isa = PBXGroup;
 			children = (
 				530BD1301E93C95000DEC9DE /* Settingrectangle.png */,
-				B13F2ADD1E92AA8700F5EBB1 /* Natural.jpg */,
 				530BD10D1E93609600DEC9DE /* 1.png */,
 				530BD11F1E937D8C00DEC9DE /* Splash.png */,
 			);
@@ -740,7 +737,6 @@
 				B16A23F01E8F75C200F0E3B3 /* IQKeyboardManager.bundle in Resources */,
 				530BD1081E935E3600DEC9DE /* UpcomingCell.xib in Resources */,
 				53672F911EAB289800B38159 /* Main.storyboard in Resources */,
-				B13F2ADE1E92AA8700F5EBB1 /* Natural.jpg in Resources */,
 				530BD1261E937F4100DEC9DE /* TodayCELL.xib in Resources */,
 				530BD10E1E93609600DEC9DE /* 1.png in Resources */,
 			);

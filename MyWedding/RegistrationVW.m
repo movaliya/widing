@@ -22,23 +22,26 @@
 {
     [super viewDidLoad];
     
-    myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-    myPickerView.delegate = self;
-    myPickerView.showsSelectionIndicator = YES;
-    [myPickerView selectRow:0 inComponent:0 animated:YES];
-    [DateOfYearTXT setInputView: myPickerView];
-    
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy"];
     int i2  = [[formatter stringFromDate:[NSDate date]] intValue];
     
-
+    [myPickerView selectRow:i2 inComponent:0 animated:NO];
+    
     //Create Years Array from 1960 to This year
     years = [[NSMutableArray alloc] init];
     for (int i=1900; i<=i2; i++)
     {
         [years addObject:[NSString stringWithFormat:@"%d",i]];
     }
+    
+    myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+    myPickerView.delegate = self;
+    myPickerView.showsSelectionIndicator = YES;
+    [myPickerView selectRow:years.count-19 inComponent:0 animated:YES];
+    [DateOfYearTXT setInputView: myPickerView];
+    [myPickerView reloadAllComponents];
+    
 }
 
 - (NSInteger)numberOfComponentsInPickerView: (UIPickerView*)thePickerView
@@ -57,7 +60,8 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    
+    NSString *YearStr=[NSString stringWithFormat:@"%@",[years objectAtIndex:row]];
+    DateOfYearTXT.text=YearStr;
 }
 
 - (IBAction)SignUp_Action:(id)sender
@@ -104,7 +108,7 @@
     }
     else if ([DateOfYearTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Date Of Year" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Year of Birth" delegate:nil];
     }
     else if ([ZoneTXT.text isEqualToString:@""])
     {
