@@ -50,8 +50,9 @@
 }
 -(void)GetServicesList
 {
+    NSString *newToken=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
-    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    [dictParams setObject:newToken  forKey:@"X-API-KEY"];
     [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
     [dictParams setObject:self.CatID  forKey:@"category_id"];
     

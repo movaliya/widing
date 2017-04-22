@@ -23,7 +23,7 @@
     [super viewDidLoad];
     
     
-    // [self upComingEvent];
+     [self upComingEvent];
     
     UINib *nib = [UINib nibWithNibName:@"UpcomingCell" bundle:nil];
     UpcomingCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
@@ -32,10 +32,17 @@
 }
 -(void)upComingEvent
 {
+    NSString *newToken=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
+    
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [currentDefaults objectForKey:@"USERDATADICT"];
+    NSDictionary* userData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSString *cutmrID=[userData valueForKey:@"id"];
+
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
-    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    [dictParams setObject:newToken  forKey:@"X-API-KEY"];
     [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
-    [dictParams setObject:@"3"  forKey:@"customer_id"];
+    [dictParams setObject:cutmrID  forKey:@"customer_id"];
     [dictParams setObject:@"1"  forKey:@"list_type"];//This for Futrue Event only 1
     [dictParams setObject:@"0"  forKey:@"page_id"];// this for 1 to 10 only
     
@@ -50,7 +57,7 @@
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
         FutureEventDATA=[response valueForKey:@"DATA"];
-        // NSLog(@"TodayEventDATA count==%d",TodayEventDATA.count);
+         NSLog(@"TodayEventDATA count==%@",FutureEventDATA);
         if (FutureEventDATA.count>0)
         {
            // [self.NotificationLabel setHidden:YES];
@@ -111,7 +118,11 @@
     cell.EventImage.layer.borderWidth=2.0;
     cell.EventImage.layer.masksToBounds = YES;
     cell.EventImage.layer.borderColor=[[UIColor blackColor] CGColor];
-    NSString *Urlstr=[[[FutureEventDATA valueForKey:@"img"] valueForKey:@"url"] objectAtIndex:indexPath.section];
+    
+    NSMutableArray *imgDic=[[FutureEventDATA valueForKey:@"img"] objectAtIndex:indexPath.section];
+    NSDictionary *tempdic=[imgDic mutableCopy];
+    NSString *Urlstr=[tempdic valueForKey:@"url"];
+    
     [cell.EventImage sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
     [cell.EventImage setShowActivityIndicatorView:YES];
     

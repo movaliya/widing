@@ -21,19 +21,26 @@
     [super viewDidLoad];
     [self.NotificationLabel setHidden:YES];
     [self getTodayEvent];
-    
+   
     
     UINib *nib = [UINib nibWithNibName:@"TodayCELL" bundle:nil];
     TodayCELL *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     TodayTableView.rowHeight = cell.frame.size.height;
     [TodayTableView registerNib:nib forCellReuseIdentifier:@"TodayCELL"];
+    
 }
 -(void)getTodayEvent
 {
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [currentDefaults objectForKey:@"USERDATADICT"];
+    NSDictionary* userData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSString *cutmrID=[userData valueForKey:@"id"];
+    
+    NSString *newToken=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
-    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    [dictParams setObject:newToken  forKey:@"X-API-KEY"];
     [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
-    [dictParams setObject:@"3"  forKey:@"customer_id"];
+    [dictParams setObject:cutmrID  forKey:@"customer_id"];
      [dictParams setObject:@"0"  forKey:@"list_type"];//This for Today Event only 0
      [dictParams setObject:@"0"  forKey:@"page_id"];// this for 1 to 10 only
     
@@ -48,7 +55,7 @@
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
         TodayEventDATA=[response valueForKey:@"DATA"];
-         // NSLog(@"TodayEventDATA count==%d",TodayEventDATA.count);
+        NSLog(@"TodayEventDATA==%@",TodayEventDATA);
         if (TodayEventDATA.count>0)
         {
             [self.NotificationLabel setHidden:YES];

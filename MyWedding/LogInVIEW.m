@@ -10,6 +10,7 @@
 #import "MobileVerification.h"
 #import "MyWedding.pch"
 #import "ForgotPasswordVW.h"
+#import "MBXFreeButtonsViewController.h"
 @interface LogInVIEW ()
 
 @end
@@ -20,12 +21,21 @@
 
 - (void)viewDidLoad
 {
+    NSString *Token=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
+    
     PopUpView.hidden=YES;
+
+    if (Token)
+    {
+        MBXFreeButtonsViewController *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MBXFreeButtonsViewController"];
+        [self.navigationController pushViewController:vcr animated:YES];
+    }
+    else
+    {
+        [self getCoutryCode];
+    }
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [self getCoutryCode];
-    
-
     // Do any additional setup after loading the view.
 }
 
@@ -123,6 +133,9 @@
         NSString *key=[response objectForKey:@"KEY"];
         [[NSUserDefaults standardUserDefaults] setObject:key forKey:@"USERTOKEN"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        MBXFreeButtonsViewController *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MBXFreeButtonsViewController"];
+        [self.navigationController pushViewController:vcr animated:YES];
     }
     else
     {
