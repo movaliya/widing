@@ -110,7 +110,8 @@
     cell.TimeLBL.text=[[TodayEventDATA valueForKey:@"contact"]objectAtIndex:indexPath.section];
     
     cell.EventImage.layer.backgroundColor=[[UIColor clearColor] CGColor];
-    cell.EventImage.layer.cornerRadius=36;
+    //cell.EventImage.layer.cornerRadius=cell.EventImage.frame.size.height/2;
+    cell.EventImage.layer.cornerRadius=30;
     cell.EventImage.layer.borderWidth=2.0;
     cell.EventImage.layer.masksToBounds = YES;
     cell.EventImage.layer.borderColor=[[UIColor blackColor] CGColor];

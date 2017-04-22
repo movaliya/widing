@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *LastName_TXT;
 @property (weak, nonatomic) IBOutlet UITextField *Email_TXT;
 @property (weak, nonatomic) IBOutlet UITextField *MobileNo_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *SecondName_TXT;
 
 @end

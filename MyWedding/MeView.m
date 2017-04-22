@@ -7,24 +7,51 @@
 //
 
 #import "MeView.h"
-
+#import "MyWedding.pch"
 @interface MeView ()
 
 @end
 
 @implementation MeView
-@synthesize FirstName_TXT,MobileNo_TXT,MiddleName_TXT,LastName_TXT,Email_TXT;
+@synthesize FirstName_TXT,MobileNo_TXT,MiddleName_TXT,LastName_TXT,Email_TXT,SecondName_TXT;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [currentDefaults objectForKey:@"USERDATADICT"];
+    NSDictionary* userData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSDictionary *NameDic=[userData valueForKey:@"name"];
     
-    FirstName_TXT.text=@"Abdul";
-    MiddleName_TXT.text=@"Rehman";
-    LastName_TXT.text=@"Mohamed";
-    MobileNo_TXT.text=@"00974 12345678";
-    Email_TXT.text=@"user@domain.com";
+    if ([NameDic valueForKey:@"first"] != (id)[NSNull null])
+    {
+        FirstName_TXT.text=[NameDic valueForKey:@"first"];
+    }
+    if ([NameDic valueForKey:@"second"] != (id)[NSNull null])
+    {
+        SecondName_TXT.text=[NameDic valueForKey:@"second"];
+    }
+    if ([NameDic valueForKey:@"middle"] != (id)[NSNull null])
+    {
+         MiddleName_TXT.text=[NameDic valueForKey:@"middle"];
+    }
+    if ([NameDic valueForKey:@"last"] != (id)[NSNull null])
+    {
+       LastName_TXT.text=[NameDic valueForKey:@"last"];
+    }
+    if ([userData valueForKey:@"mobile"] != (id)[NSNull null])
+    {
+       MobileNo_TXT.text=[userData valueForKey:@"mobile"];
+    }
+    if ([userData valueForKey:@"email"] != (id)[NSNull null])
+    {
+        Email_TXT.text=[userData valueForKey:@"email"];
+    }
+   
+    
+    
+    
     
 }
 

@@ -111,9 +111,9 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.ServiceTitle=[[ServicesListDATA valueForKey:@"name"]objectAtIndex:indexPath.section];
-    cell.serviceNumber=[[ServicesListDATA valueForKey:@"contact"]objectAtIndex:indexPath.section];
-    cell.ServiceDetail=[[ServicesListDATA valueForKey:@"address"]objectAtIndex:indexPath.section];
+    cell.ServiceTitle.text=[[ServicesListDATA valueForKey:@"name"]objectAtIndex:indexPath.section];
+    cell.serviceNumber.text=[[ServicesListDATA valueForKey:@"contact"]objectAtIndex:indexPath.section];
+    cell.ServiceDetail.text=[[ServicesListDATA valueForKey:@"address"]objectAtIndex:indexPath.section];
     
     
     cell.ServiceImage.layer.backgroundColor=[[UIColor clearColor] CGColor];
