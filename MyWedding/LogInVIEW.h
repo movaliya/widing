@@ -11,5 +11,9 @@
 @interface LogInVIEW : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *MobileTXT;
 @property (weak, nonatomic) IBOutlet UITextField *PasswordTXT;
+@property (strong, nonatomic) IBOutlet UIButton *CountryCodeBTN;
+- (IBAction)CountryBTN_Click:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIView *PopUpView;
+@property (strong, nonatomic) IBOutlet UITableView *popupTBL;
 @end

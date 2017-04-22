@@ -16,7 +16,11 @@
 
 @implementation LogInVIEW
 @synthesize MobileTXT,PasswordTXT;
-- (void)viewDidLoad {
+@synthesize popupTBL,PopUpView,CountryCodeBTN;
+
+- (void)viewDidLoad
+{
+    PopUpView.hidden=YES;
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     
@@ -115,4 +119,8 @@
 }
 */
 
+- (IBAction)CountryBTN_Click:(id)sender
+{
+    PopUpView.hidden=NO;
+}
 @end
