@@ -11,8 +11,11 @@
 @interface SeviceListView : UIViewController
 {
     NSMutableArray *HotelDescrition;
+    NSMutableDictionary *ServicesListDATA,*MainServiceDIC;
 }
 @property (strong, nonatomic) NSString *TitleTXT;
+@property (strong, nonatomic) NSString *CatID;
+
 
 @property (weak, nonatomic) IBOutlet UITableView *ListTableView;
 @property (weak, nonatomic) IBOutlet UILabel *Title_LBL;

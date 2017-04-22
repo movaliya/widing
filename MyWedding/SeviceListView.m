@@ -9,6 +9,9 @@
 #import "SeviceListView.h"
 #import "ServiceListCELL.h"
 #import "ServiceDetailView.h"
+#import "MyWedding.pch"
+#import <QuartzCore/QuartzCore.h>
+
 @interface SeviceListView ()
 
 @end
@@ -28,19 +31,57 @@
     
     [super viewDidLoad];
     
+    
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self GetServicesList];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    
+    
+    
     Title_LBL.text=self.TitleTXT;
     UINib *nib = [UINib nibWithNibName:@"ServiceListCELL" bundle:nil];
     ServiceListCELL *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     ListTableView.rowHeight = cell.frame.size.height;
     [ListTableView registerNib:nib forCellReuseIdentifier:@"ServiceListCELL"];
     
-    HotelDescrition=[[NSMutableArray alloc]initWithObjects:@"Situated on the shores of West Bay and the sparkling blue waters of the Arabian Gulf, the landmark 5-star Sheraton Grand Doha has been restored to its former glory, preserving its authenticity while cutting-edge amenities and facilities cater to today’s international traveller.\nThe hotel is home to ten restaurants, bars and lounges including Latino Steakhouse, one of the best South American restaurants in the city, the truly Italian La Veranda and Irish Harp, Doha’s popular Irish pub.\nRefresh your taste buds with our two new restaurants, Nusr-Et Steakhouse and Em-Sherif  (coming soon) replacing your old favourites Al Maskar and Al Shaheen!",@"",nil];
+    HotelDescrition=[[NSMutableArray alloc]initWithObjects:@"Situated on the shores of West Bay and the sparkling blue waters of the Arabian Gulf, the landmark 5-star Sheraton Grand Doha has been restored to its former glory, preserving its authenticity while cutting-edge amenities and facilities cater to today’s international traveller.\nThe hotel is home to ten restaurants, bars and lounges including Latino Steakhouse, one of the best South American restaurants in the city, the truly Italian La Veranda and Irish Harp, Doha’s popular Irish pub.\nRefresh your taste buds with our two new restaurants, Nusr-Et Steakhouse and Em-Sherif  (coming soon) replacing your old favourites Al Maskar and Al Shaheen!",@"preserving its authenticity while cutting-edge amenities and facilities cater to today’s international traveller.\nThe hotel is home to ten restaurants, bars and lounges including Latino Steakhouse, one of the best South American restaurants in the city, the truly Italian La Veranda and Irish Harp,",nil];
+}
+-(void)GetServicesList
+{
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
+    [dictParams setObject:self.CatID  forKey:@"category_id"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",ServicesListURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleServicesListResponse:response];
+     }];
+}
+
+- (void)handleServicesListResponse:(NSDictionary*)response
+{
+    NSLog(@"Cate Respose==%@",response);
+    
+    if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
+    {
+        ServicesListDATA=[response valueForKey:@"DATA"];
+        MainServiceDIC=[response mutableCopy];
+        [self.ListTableView reloadData];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
+    
 }
 #pragma mark UITableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
-    return 10;
+    return ServicesListDATA.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -69,9 +110,22 @@
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    cell.ServiceTitle=[[ServicesListDATA valueForKey:@"name"]objectAtIndex:indexPath.section];
+    cell.serviceNumber=[[ServicesListDATA valueForKey:@"contact"]objectAtIndex:indexPath.section];
+    cell.ServiceDetail=[[ServicesListDATA valueForKey:@"address"]objectAtIndex:indexPath.section];
     
     
-    // cell.textLabel.text = [NSString stringWithFormat:@"Page 3 Row %ld", (long)indexPath.row];
+    cell.ServiceImage.layer.backgroundColor=[[UIColor clearColor] CGColor];
+    cell.ServiceImage.layer.cornerRadius=36;
+    cell.ServiceImage.layer.borderWidth=2.0;
+    cell.ServiceImage.layer.masksToBounds = YES;
+    cell.ServiceImage.layer.borderColor=[[UIColor blackColor] CGColor];
+    NSString *Urlstr=[[ServicesListDATA valueForKey:@"img"] objectAtIndex:indexPath.section];
+    [cell.ServiceImage sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+    [cell.ServiceImage setShowActivityIndicatorView:YES];
+    
+    
+    
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -83,7 +137,7 @@
 {
     ServiceDetailView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ServiceDetailView"];
     vcr.HotelTitleTXT=@"Sheraton Grand Doha";
-    vcr.HotelDescritionTXT=[HotelDescrition objectAtIndex:0];
+    vcr.detailData=[[[MainServiceDIC valueForKey:@"DATA"]objectAtIndex:indexPath.section]mutableCopy];
     [self.navigationController pushViewController:vcr animated:YES];
 }
 - (IBAction)Back_BTN_Action:(id)sender

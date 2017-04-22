@@ -10,4 +10,7 @@
 
 @interface UpcomingView : UIViewController
 
+{
+    NSMutableDictionary *FutureEventDATA;
+}
 @end

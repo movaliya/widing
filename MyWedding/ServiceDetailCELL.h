@@ -10,5 +10,11 @@
 
 @interface ServiceDetailCELL : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *Description;
+@property (weak, nonatomic) IBOutlet UIImageView *detailImage;
+@property (weak, nonatomic) IBOutlet UILabel *detailName;
+@property (weak, nonatomic) IBOutlet UILabel *detailAddress;
+@property (weak, nonatomic) IBOutlet UILabel *DetailURL;
+@property (weak, nonatomic) IBOutlet UILabel *DetailDescription;
+@property (weak, nonatomic) IBOutlet UILabel *detailNumber;
 
 @end

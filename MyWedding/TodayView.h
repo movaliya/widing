@@ -10,9 +10,10 @@
 
 @interface TodayView : UIViewController
 {
-    
+    NSMutableDictionary *TodayEventDATA;
    
 }
+@property (weak, nonatomic) IBOutlet UILabel *NotificationLabel;
 @property (weak, nonatomic) IBOutlet UITableView *TodayTableView;
 
 

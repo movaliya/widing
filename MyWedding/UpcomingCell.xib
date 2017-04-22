@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,22 +12,19 @@
             <rect key="frame" x="0.0" y="0.0" width="360" height="114"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="360" height="113"/>
+                <frame key="frameInset" width="360" height="113"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UpcommingCell" translatesAutoresizingMaskIntoConstraints="NO" id="jSd-W1-5bl">
-                        <rect key="frame" x="0.0" y="0.0" width="360" height="113"/>
                         <color key="backgroundColor" red="0.1137254902" green="0.14901960780000001" blue="0.16862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.png" translatesAutoresizingMaskIntoConstraints="NO" id="IH2-X8-zex">
-                        <rect key="frame" x="8" y="7" width="100" height="100"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="X8d-mJ-cZC"/>
                             <constraint firstAttribute="width" constant="100" id="vuT-sV-uWJ"/>
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7M8-Hk-0kT">
-                        <rect key="frame" x="322" y="80" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="35x-1e-k0H"/>
                             <constraint firstAttribute="width" constant="30" id="fv6-0q-ABx"/>
@@ -38,7 +32,6 @@
                         <state key="normal" image="Canlender"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abdul Rehman" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dYx-vR-F8u">
-                        <rect key="frame" x="116" y="8" width="236" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="gJj-ae-oxC"/>
                         </constraints>
@@ -47,7 +40,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Revenu Hall Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbO-ro-Nvf">
-                        <rect key="frame" x="116" y="28" width="236" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="OcF-tR-Ead"/>
                         </constraints>
@@ -56,7 +48,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wedding" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isk-JZ-cTf">
-                        <rect key="frame" x="116" y="48" width="236" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="Moz-vp-sgu"/>
                         </constraints>
@@ -65,7 +56,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 August 2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3iH-Jx-9ic">
-                        <rect key="frame" x="116" y="68" width="236" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="7Ot-3o-4r6"/>
                         </constraints>
@@ -74,7 +64,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:30 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmQ-aX-ad8">
-                        <rect key="frame" x="116" y="88" width="55.5" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="8a1-FM-TKv"/>
                         </constraints>
@@ -110,6 +99,14 @@
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="DateLBL" destination="3iH-Jx-9ic" id="A6i-ya-L2F"/>
+                <outlet property="EventImage" destination="IH2-X8-zex" id="Jp3-eV-Qz3"/>
+                <outlet property="EventName" destination="isk-JZ-cTf" id="Wyy-P1-P7p"/>
+                <outlet property="address" destination="mbO-ro-Nvf" id="Igw-Nm-022"/>
+                <outlet property="hostName" destination="dYx-vR-F8u" id="TVr-ed-TG6"/>
+                <outlet property="timeLBL" destination="bmQ-aX-ad8" id="fie-Fs-qf8"/>
+            </connections>
             <point key="canvasLocation" x="-137" y="-14.5"/>
         </tableViewCell>
     </objects>

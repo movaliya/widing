@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSString *HotelTitleTXT;
 @property (strong, nonatomic) NSString *HotelDescritionTXT;
 
+@property (strong, nonatomic) NSMutableDictionary *detailData;
 
 @end

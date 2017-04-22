@@ -9,5 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface UpcomingCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *EventImage;
+@property (weak, nonatomic) IBOutlet UILabel *hostName;
+@property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *EventName;
+@property (weak, nonatomic) IBOutlet UILabel *DateLBL;
+@property (weak, nonatomic) IBOutlet UILabel *timeLBL;
 
 @end

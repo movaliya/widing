@@ -12,6 +12,7 @@
 {
     NSMutableArray *ImageNameSection;
     NSMutableArray *TitleNameSection;
+    NSMutableDictionary *CatDATA;
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ServiceDetailView.h"
 #import "ServiceDetailCELL.h"
+#import "MyWedding.pch"
 @interface ServiceDetailView ()
 
 @end
@@ -24,9 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    Title_LBL.text=self.HotelTitleTXT;
-    
+    NSLog(@"detail data=%@",_detailData);
+    Title_LBL.text=[_detailData valueForKey:@"name"];
     UINib *nib = [UINib nibWithNibName:@"ServiceDetailCELL" bundle:nil];
     ServiceDetailCELL *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     [ServiceDetialTABLE registerNib:nib forCellReuseIdentifier:@"ServiceDetailCELL"];
@@ -66,10 +66,26 @@
     {
         cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     }
-    cell.Description.text=self.HotelDescritionTXT;
     [cell updateConstraintsIfNeeded];
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
+
+    //
+   // NSLog(@"name==%@",[_detailData valueForKey:@"name"]);
+    cell.detailName.text=[_detailData valueForKey:@"name"];
+    cell.detailNumber.text=[_detailData valueForKey:@"contact"];
+    cell.detailAddress.text=[_detailData valueForKey:@"address"];
+    cell.DetailURL.text=[_detailData valueForKey:@"url"];
+    cell.Description.text=[_detailData valueForKey:@"details"];
+    
+    cell.detailImage.layer.backgroundColor=[[UIColor clearColor] CGColor];
+    cell.detailImage.layer.cornerRadius=36;
+    cell.detailImage.layer.borderWidth=2.0;
+    cell.detailImage.layer.masksToBounds = YES;
+    cell.detailImage.layer.borderColor=[[UIColor blackColor] CGColor];
+    NSString *Urlstr=[_detailData valueForKey:@"img"];
+    [cell.detailImage sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+    [cell.detailImage setShowActivityIndicatorView:YES];
     
     return cell;
 }

@@ -26,6 +26,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self getCategories];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    
+    
+    
     ImageNameSection = [[NSMutableArray alloc] initWithObjects:@"Hotelicon",@"FlowerIcon",@"Hotelicon",@"FlowerIcon",@"Hotelicon",@"FlowerIcon", nil];
     TitleNameSection = [[NSMutableArray alloc] initWithObjects:@"Hotels",@"Flowers",@"Others",@"Others",@"Hotels",@"Flowers", nil];
     
@@ -43,13 +52,41 @@
     NSLog(@"first view");
     // Do any additional setup after loading the view.
 }
+
+-(void)getCategories
+{
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",CategoriesListURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleCategoriesResponse:response];
+     }];
+}
+- (void)handleCategoriesResponse:(NSDictionary*)response
+{
+    NSLog(@"Cate Respose==%@",response);
+    
+    if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
+    {
+        CatDATA=[response valueForKey:@"DATA"];
+        [self.collectionView reloadData];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
+    
+}
+
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     return 1;
 }
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return TitleNameSection.count;
+    return CatDATA.count;
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,10 +96,17 @@
     
     CVCell *cell = (CVCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
-    [cell.titleLabel setText:[TitleNameSection objectAtIndex:indexPath.row]];
-    NSString *imagename=[ImageNameSection objectAtIndex:indexPath.row];
-    UIImage *imge=[UIImage imageNamed:imagename];
-    [cell.IconImageview setImage:imge];
+    [cell.titleLabel setText:[[CatDATA valueForKey:@"name"] objectAtIndex:indexPath.row]];
+    
+    
+    NSString *Urlstr=[[CatDATA valueForKey:@"img"] objectAtIndex:indexPath.row];
+    
+    [cell.IconImageview sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+    [cell.IconImageview setShowActivityIndicatorView:YES];
+    
+ //   NSString *imagename=[ImageNameSection objectAtIndex:indexPath.row];
+   // UIImage *imge=[UIImage imageNamed:imagename];
+    //[cell.IconImageview setImage:imge];
     
     return cell;
     
@@ -71,7 +115,8 @@
     
     
     SeviceListView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SeviceListView"];
-    vcr.TitleTXT=[TitleNameSection objectAtIndex:indexPath.row];
+    vcr.TitleTXT=[[CatDATA valueForKey:@"name"] objectAtIndex:indexPath.row];
+    vcr.CatID=[[CatDATA valueForKey:@"id"] objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:vcr animated:YES];
 }
 

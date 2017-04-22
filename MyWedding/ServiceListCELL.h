@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ServiceListCELL : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *ServiceImage;
+@property (weak, nonatomic) IBOutlet UILabel *ServiceTitle;
+@property (weak, nonatomic) IBOutlet UILabel *serviceNumber;
+@property (weak, nonatomic) IBOutlet UILabel *ServiceDetail;
+@property (weak, nonatomic) IBOutlet UIButton *ServiceCallBTN;
 
 @end

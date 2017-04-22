@@ -11,17 +11,31 @@
 #import "AFNetworking.h"
 #import "AFHTTPRequestOperationManager.h"
 #import "AFNetworking/AFNetworking.h"
-
+#import "CommonWS.h"
 #import "KVNProgress.h"
+#import "AppDelegate.h"
+#import "UIImageView+WebCache.h"
 
 
 // AFNetworking
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <MobileCoreServices/MobileCoreServices.h>
 
+// URL Or Web Service Implement
+#define X_API_KEY @"6d9f729b765aae27f45e5ef9150fa073f8a61b94"
 
+//User Services
+#define LoginURL @"http://dawate.com/api/user/login"
+#define GetCountryCodeURL @"http://dawate.com/api/user/getCountryCode"
+#define ForgotPasswordURL @"http://dawate.com/api/user/forgotPassword"
+#define registerURL @"http://dawate.com/api/user/register"
 
+//Home Services
+#define CategoriesListURL @"http://dawate.com/api/index.php/home/getCategories"
+#define ServicesListURL @"http://dawate.com/api/index.php/home/getServices"
 
+// Get event for Today and future
+#define getEventsURL @"http://dawate.com/api/index.php/home/getEvents"
 
 
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
