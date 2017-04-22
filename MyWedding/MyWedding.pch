@@ -29,6 +29,7 @@
 #define GetCountryCodeURL @"http://dawate.com/api/user/getCountryCode"
 #define ForgotPasswordURL @"http://dawate.com/api/user/forgotPassword"
 #define registerURL @"http://dawate.com/api/user/register"
+#define GenrateNewTokenURL @"http://dawate.com/api/key/index"
 
 //Home Services
 #define CategoriesListURL @"http://dawate.com/api/index.php/home/getCategories"
