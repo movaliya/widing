@@ -8,18 +8,24 @@
 
 #import "MobileVerification.h"
 #import "MyWedding.pch"
+#import "RegistrationVW.h"
 
 @interface MobileVerification ()
 
 @end
 
 @implementation MobileVerification
+@synthesize Country_BTN,PopupTBL,PopupView,VerificationPOPupView,VerificatonTXT;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    PopupView.hidden=YES;
+    VerificationPOPupView.hidden=YES;
     [self getCoutryCode];
     // Do any additional setup after loading the view.
 }
+
 -(void)getCoutryCode
 {
     
@@ -31,15 +37,31 @@
      {
          [self handleCountryCodeResponse:response];
      }];
-    
 }
+
 - (void)handleCountryCodeResponse:(NSDictionary*)response
 {
     NSLog(@"Respose==%@",response);
     
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
-        //[self.navigationController popViewControllerAnimated:YES];
+        //***************************Local Device country Code Take******************
+        NSLocale *countryLocale = [NSLocale currentLocale];
+        NSString *countryCode = [countryLocale objectForKey:NSLocaleCountryCode];
+        NSString *country = [countryLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
+        //****************************************************************************
+        CountryCodeDATA=[response valueForKey:@"DATA"];
+        
+        NSArray *arrayWithCountryname = [CountryCodeDATA valueForKey:@"name"];
+        NSUInteger index = [arrayWithCountryname indexOfObject:country];
+        
+        // NSLog(@"index=%lu",(unsigned long)index);
+        // NSLog(@"code=%@",[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:index]);
+        
+        [Country_BTN setTitle:[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:index] forState:UIControlStateNormal];
+        CountryCodeId=[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:index];
+        
+        [PopupTBL reloadData];
     }
     else
     {
@@ -47,23 +69,77 @@
     }
     
 }
+
 - (IBAction)BackBtn_Action:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (void)didReceiveMemoryWarning {
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)CountryBTN_Click:(id)sender
+{
+    PopupView.hidden=NO;
 }
-*/
+
+#pragma mark UITableView delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return CountryCodeDATA.count;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 25.0f;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *v = [UIView new];
+    [v setBackgroundColor:[UIColor clearColor]];
+    return v;
+}
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    // Configure the cell.
+    cell.textLabel.text = [[CountryCodeDATA valueForKey:@"name"] objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [Country_BTN setTitle:[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+    CountryCodeId=[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:indexPath.row];
+    PopupView.hidden=YES;
+}
+
+
+- (IBAction)Verified_Click:(id)sender
+{
+    [VerificatonTXT resignFirstResponder];
+    VerificationPOPupView.hidden=YES;
+    RegistrationVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RegistrationVW"];
+    [self.navigationController pushViewController:vcr animated:YES];
+}
+- (IBAction)Register_Click:(id)sender
+{
+    VerificationPOPupView.hidden=NO;
+}
+
 
 @end

@@ -58,6 +58,7 @@
             }
         }
 }
+
 -(void)CallForloging
 {
     NSString *DEVICETOKEN = [[NSUserDefaults standardUserDefaults]

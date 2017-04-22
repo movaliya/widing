@@ -9,5 +9,19 @@
 #import <UIKit/UIKit.h>
 
 @interface MobileVerification : UIViewController
+{
+    NSMutableDictionary *CountryCodeDATA;
+    NSString *CountryCodeId;
+}
+@property (strong, nonatomic) IBOutlet UIView *PopupView;
+@property (strong, nonatomic) IBOutlet UITableView *PopupTBL;
+- (IBAction)Register_Click:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIButton *Country_BTN;
+- (IBAction)CountryBTN_Click:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIView *VerificationPOPupView;
+- (IBAction)Verified_Click:(id)sender;
+@property (strong, nonatomic) IBOutlet UITextField *VerificatonTXT;
 
 @end

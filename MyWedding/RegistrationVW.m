@@ -8,17 +8,58 @@
 
 #import "RegistrationVW.h"
 #import "MyWedding.pch"
-@interface RegistrationVW ()
-
+@interface RegistrationVW ()<UIPickerViewDataSource,UIPickerViewDelegate>
+{
+    UIPickerView *myPickerView;
+    NSMutableArray *years;
+}
 @end
 
 @implementation RegistrationVW
 @synthesize FirstNameTXT,SecondNameTXT,MiddleNameTXT,LastNameTXT,PasswordTXT,EmailTXT,VillNoTXT,AreaTXT,StreetNameTXT,DateOfYearTXT,ZoneTXT,ConfrimPasswordTXT;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    myPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
+    myPickerView.delegate = self;
+    myPickerView.showsSelectionIndicator = YES;
+    [myPickerView selectRow:0 inComponent:0 animated:YES];
+    [DateOfYearTXT setInputView: myPickerView];
+    
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy"];
+    int i2  = [[formatter stringFromDate:[NSDate date]] intValue];
+    
+
+    //Create Years Array from 1960 to This year
+    years = [[NSMutableArray alloc] init];
+    for (int i=1900; i<=i2; i++)
+    {
+        [years addObject:[NSString stringWithFormat:@"%d",i]];
+    }
 }
+
+- (NSInteger)numberOfComponentsInPickerView: (UIPickerView*)thePickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)thePickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [years count];
+}
+- (NSString *)pickerView:(UIPickerView *)thePickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [years objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    
+}
+
 - (IBAction)SignUp_Action:(id)sender
 {
     if ([FirstNameTXT.text isEqualToString:@""])
@@ -129,6 +170,7 @@
          [self handleRegisterResponse:response];
      }];
 }
+
 - (void)handleRegisterResponse:(NSDictionary*)response
 {
     NSLog(@"Respose==%@",response);
@@ -144,24 +186,17 @@
     }
     
 }
+
 - (IBAction)BackBtn_action:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
