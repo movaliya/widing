@@ -30,7 +30,7 @@
 		530BD1291E938EB200DEC9DE /* SettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BD1281E938EB200DEC9DE /* SettingView.m */; };
 		530BD1311E93C95000DEC9DE /* Settingrectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 530BD1301E93C95000DEC9DE /* Settingrectangle.png */; };
 		534EF7F71EA9CC0C00500611 /* VerificationCodeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 534EF7F61EA9CC0C00500611 /* VerificationCodeScreen.m */; };
-		534EF7F91EA9CD9D00500611 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 534EF7F81EA9CD9D00500611 /* Main.storyboard */; };
+		53672F911EAB289800B38159 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53672F901EAB289800B38159 /* Main.storyboard */; };
 		B13F2ADB1E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B13F2AD71E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m */; };
 		B13F2ADC1E92A41D00F5EBB1 /* MBXPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B13F2ADA1E92A41D00F5EBB1 /* MBXPageViewController.m */; };
 		B13F2ADE1E92AA8700F5EBB1 /* Natural.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B13F2ADD1E92AA8700F5EBB1 /* Natural.jpg */; };
@@ -137,7 +137,7 @@
 		530BD1301E93C95000DEC9DE /* Settingrectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settingrectangle.png; sourceTree = "<group>"; };
 		534EF7F51EA9CC0C00500611 /* VerificationCodeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeScreen.h; sourceTree = "<group>"; };
 		534EF7F61EA9CC0C00500611 /* VerificationCodeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeScreen.m; sourceTree = "<group>"; };
-		534EF7F81EA9CD9D00500611 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		53672F901EAB289800B38159 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B13F2AD61E92A41D00F5EBB1 /* MBXFreeButtonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXFreeButtonsViewController.h; sourceTree = "<group>"; };
 		B13F2AD71E92A41D00F5EBB1 /* MBXFreeButtonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBXFreeButtonsViewController.m; sourceTree = "<group>"; };
 		B13F2AD91E92A41D00F5EBB1 /* MBXPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBXPageViewController.h; sourceTree = "<group>"; };
@@ -436,7 +436,7 @@
 				B14336BD1E90C97F00A0D7A1 /* MeView.m */,
 				530BD1271E938EB200DEC9DE /* SettingView.h */,
 				530BD1281E938EB200DEC9DE /* SettingView.m */,
-				534EF7F81EA9CD9D00500611 /* Main.storyboard */,
+				53672F901EAB289800B38159 /* Main.storyboard */,
 				530BD11E1E937D7A00DEC9DE /* Images */,
 				B16A228F1E8F753E00F0E3B3 /* Assets.xcassets */,
 				B16A22911E8F753E00F0E3B3 /* LaunchScreen.storyboard */,
@@ -743,7 +743,7 @@
 				B16A22901E8F753E00F0E3B3 /* Assets.xcassets in Resources */,
 				B16A23F01E8F75C200F0E3B3 /* IQKeyboardManager.bundle in Resources */,
 				530BD1081E935E3600DEC9DE /* UpcomingCell.xib in Resources */,
-				534EF7F91EA9CD9D00500611 /* Main.storyboard in Resources */,
+				53672F911EAB289800B38159 /* Main.storyboard in Resources */,
 				B13F2ADE1E92AA8700F5EBB1 /* Natural.jpg in Resources */,
 				530BD1261E937F4100DEC9DE /* TodayCELL.xib in Resources */,
 				530BD10E1E93609600DEC9DE /* 1.png in Resources */,
