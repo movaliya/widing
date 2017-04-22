@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *StreetNameTXT;
 @property (weak, nonatomic) IBOutlet UITextField *AreaTXT;
 @property (weak, nonatomic) IBOutlet UITextField *ZoneTXT;
+@property (weak, nonatomic) IBOutlet UITextField *ConfrimPasswordTXT;
 
 @end

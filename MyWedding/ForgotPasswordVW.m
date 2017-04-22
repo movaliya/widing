@@ -49,23 +49,24 @@
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",ForgotPasswordURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
      {
-         [self handleSIGNINResponse:response];
+         [self handleForgotPassResponse:response];
      }];
 }
-- (void)handleSIGNINResponse:(NSDictionary*)response
+- (void)handleForgotPassResponse:(NSDictionary*)response
 {
     NSLog(@"Respose==%@",response);
     
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
-        [[NSUserDefaults standardUserDefaults]setObject:response forKey:@"LoginUserDic"];
-        //[self.navigationController popViewControllerAnimated:YES];
+        
     }
     else
     {
         [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
     }
     
+}
+- (IBAction)CountryCode_Action:(id)sender {
 }
 - (IBAction)BackBtn_Action:(id)sender
 {

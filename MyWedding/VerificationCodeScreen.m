@@ -82,5 +82,9 @@
     }
     return YES;
 }
+- (IBAction)backBtn_action:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 @end

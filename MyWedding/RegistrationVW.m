@@ -13,7 +13,7 @@
 @end
 
 @implementation RegistrationVW
-@synthesize FirstNameTXT,SecondNameTXT,MiddleNameTXT,LastNameTXT,PasswordTXT,EmailTXT,VillNoTXT,AreaTXT,StreetNameTXT,DateOfYearTXT,ZoneTXT;
+@synthesize FirstNameTXT,SecondNameTXT,MiddleNameTXT,LastNameTXT,PasswordTXT,EmailTXT,VillNoTXT,AreaTXT,StreetNameTXT,DateOfYearTXT,ZoneTXT,ConfrimPasswordTXT;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -76,6 +76,10 @@
         {
             [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter valid email" delegate:nil];
         }
+        else if (![PasswordTXT.text isEqualToString:ConfrimPasswordTXT.text])
+        {
+            [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Password does not match the confirm password." delegate:nil];
+        }
         else
         {
             BOOL internet=[AppDelegate connectedToNetwork];
@@ -103,7 +107,7 @@
     [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
     [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
     
-    [dictParams setObject:@"102"  forKey:@"customer_id"];
+    [dictParams setObject:@"102"  forKey:@"customer_id"]; // Custmer ID to Replace dynamic after testing complete
     [dictParams setObject:FirstNameTXT.text  forKey:@"first_name"];
     [dictParams setObject:SecondNameTXT.text  forKey:@"second_name"];
     [dictParams setObject:MiddleNameTXT.text  forKey:@"middle_name"];
@@ -114,7 +118,7 @@
     [dictParams setObject:EmailTXT.text  forKey:@"email"];
     
     [dictParams setObject:DEVICETOKEN  forKey:@"device_token"];
-    [dictParams setObject:@"ios"  forKey:@"device_type"];
+    [dictParams setObject:@"ios"  forKey:@"device_type"];// This is a static string for Device is IOS or Android
     [dictParams setObject:VillNoTXT.text  forKey:@"villa_no"];
     [dictParams setObject:StreetNameTXT.text  forKey:@"street_name"];
     [dictParams setObject:AreaTXT.text  forKey:@"area"];
