@@ -60,16 +60,14 @@
 }
 -(void)CallForloging
 {
+
     NSString *DEVICETOKEN = [[NSUserDefaults standardUserDefaults]
                             stringForKey:@"DEVICETOKEN"];
-    
     if (!DEVICETOKEN) {
         DEVICETOKEN=@"DEVICETOKEN";
     }
-
-    
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
-    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    //[dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
     //[dictParams setObject:@"application/json"  forKey:@"Content-Type"];
     [dictParams setObject:CountryCodeId  forKey:@"country_id"];
     [dictParams setObject:MobileTXT.text  forKey:@"mobile"];
@@ -87,8 +85,43 @@
     
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
-        [[NSUserDefaults standardUserDefaults]setObject:response forKey:@"LoginUserDic"];
-        //[self.navigationController popViewControllerAnimated:YES];
+        [self GenrateNewToken];
+        [AppDelegate showErrorMessageWithTitle:@"SUCCESS" message:[response objectForKey:@"MSG"] delegate:nil];
+        NSDictionary *userdata=[response valueForKey:@"DATA"];
+        NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userdata];
+        [currentDefaults setObject:data forKey:@"USERDATADICT"];
+
+        
+       // [[NSUserDefaults standardUserDefaults]setObject:userdata forKey:@"USERDATADICT"];
+        
+
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
+    
+}
+#pragma mark- Gerate New TOKEN After Login
+-(void)GenrateNewToken
+{
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",GenrateNewTokenURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleUserTokenResponse:response];
+     }];
+}
+- (void)handleUserTokenResponse:(NSDictionary*)response
+{
+    NSLog(@"USER KEY Respose==%@",response);
+    
+    if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
+    {
+        NSString *key=[response objectForKey:@"KEY"];
+        [[NSUserDefaults standardUserDefaults] setObject:key forKey:@"USERTOKEN"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     else
     {
@@ -202,5 +235,9 @@
 - (IBAction)CountryBTN_Click:(id)sender
 {
     PopUpView.hidden=NO;
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+     PopUpView.hidden=YES;
 }
 @end

@@ -156,13 +156,20 @@
 
 + (void)AAwebserviceWithURL:(NSString*)strUrl withParam:(NSDictionary*)dictParam withCompletion:(void(^)(NSDictionary*response,BOOL success1))completion
 {
-    NSString *Token=[[NSUserDefaults standardUserDefaults]objectForKey:@"Token"];
+    NSString *Token=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
     
+
+    if (!Token) {
+        Token=[NSString stringWithFormat:@"%@",X_API_KEY];
+    }
+    
+    //[dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    [manager.requestSerializer setValue:Token forHTTPHeaderField:@"authorization"];
+    [manager.requestSerializer setValue:Token forHTTPHeaderField:@"X-API-KEY"];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"application/json"];
     [KVNProgress show];
+    
     [manager POST:strUrl parameters:dictParam progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
     {
         NSLog(@"success!");
