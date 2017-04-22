@@ -119,13 +119,19 @@
     cell.EventImage.layer.masksToBounds = YES;
     cell.EventImage.layer.borderColor=[[UIColor blackColor] CGColor];
     
-    NSMutableArray *imgDic=[[FutureEventDATA valueForKey:@"img"] objectAtIndex:indexPath.section];
-    NSDictionary *tempdic=[imgDic mutableCopy];
-    NSString *Urlstr=[tempdic valueForKey:@"url"];
-    
-    [cell.EventImage sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
-    [cell.EventImage setShowActivityIndicatorView:YES];
-    
+    NSArray *dic;
+    for (dic in [FutureEventDATA valueForKey:@"img"])
+    {
+        for (NSDictionary *dics in dic)
+        {
+            NSString *Urlstr=[dics valueForKey:@"url"];
+            [cell.EventImage sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+            [cell.EventImage setShowActivityIndicatorView:YES];
+            NSLog(@"dic=%@",dics);
+        }
+        
+    }
+       
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
