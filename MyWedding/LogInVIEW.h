@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface LogInVIEW : UIViewController
+{
+    NSMutableDictionary *CountryCodeDATA;
+    NSString *CountryCodeId;
+}
 @property (weak, nonatomic) IBOutlet UITextField *MobileTXT;
 @property (weak, nonatomic) IBOutlet UITextField *PasswordTXT;
 @property (strong, nonatomic) IBOutlet UIButton *CountryCodeBTN;
