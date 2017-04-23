@@ -29,17 +29,9 @@
     
     BOOL internet=[AppDelegate connectedToNetwork];
     if (internet)
-        [self getCategories];
+        [self performSelector:@selector(getCategories) withObject:nil afterDelay:0.0];
     else
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
-    
-    
-    
-    ImageNameSection = [[NSMutableArray alloc] initWithObjects:@"Hotelicon",@"FlowerIcon",@"Hotelicon",@"FlowerIcon",@"Hotelicon",@"FlowerIcon", nil];
-    TitleNameSection = [[NSMutableArray alloc] initWithObjects:@"Hotels",@"Flowers",@"Others",@"Others",@"Hotels",@"Flowers", nil];
-    
-    
-    
     
     [self.collectionView registerClass:[CVCell class] forCellWithReuseIdentifier:@"cvCell"];
     /* end of subclass-based cells block */

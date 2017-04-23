@@ -27,7 +27,11 @@
     VerificatoinView.hidden=YES;
     CountryPopup.hidden=YES;
     
-    [self getCoutryCode];
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self performSelector:@selector(getCoutryCode) withObject:nil afterDelay:0.0];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
     
 }
 
@@ -240,13 +244,16 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell=nil;
     if (cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell.
     cell.textLabel.text = [[CountryCodeDATA valueForKey:@"name"] objectAtIndex:indexPath.row];
+    cell.textLabel.textColor=[UIColor whiteColor];
+    cell.backgroundColor=[UIColor clearColor];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     
     return cell;
 }
@@ -262,9 +269,12 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     CountryPopup.hidden=YES;
-    //VerificatoinView.hidden=YES;
+    VerificatoinView.hidden=YES;
     [MobileNumber_TXT resignFirstResponder];
+    [_NewPasswrd_TXT resignFirstResponder];
+    [_confirmPasswrd_TXT resignFirstResponder];
     [Verification_TXT resignFirstResponder];
+    
 }
 - (IBAction)CountryCode_Action:(id)sender
 {

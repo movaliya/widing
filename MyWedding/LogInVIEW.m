@@ -21,21 +21,32 @@
 
 - (void)viewDidLoad
 {
-    NSString *Token=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
-    
-    PopUpView.hidden=YES;
-
-    if (Token)
+    [super viewDidLoad];
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
     {
-        MBXFreeButtonsViewController *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MBXFreeButtonsViewController"];
-        [self.navigationController pushViewController:vcr animated:YES];
+        NSString *Token=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
+        
+        PopUpView.hidden=YES;
+        
+        if (Token)
+        {
+            MBXFreeButtonsViewController *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"MBXFreeButtonsViewController"];
+            [self.navigationController pushViewController:vcr animated:YES];
+        }
+        else
+        {
+            [self performSelector:@selector(getCoutryCode) withObject:nil afterDelay:0.0];
+        }
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
     else
     {
-        [self getCoutryCode];
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
     }
-    [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+
+   
     // Do any additional setup after loading the view.
 }
 
@@ -44,8 +55,6 @@
     
     if ([MobileTXT.text isEqualToString:@""])
     {
-        //[self ShowPOPUP];
-        
         [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Mobile Number" delegate:nil];
     }
    else if (CountryCodeBTN.titleLabel.text.length == 0)
@@ -91,9 +100,7 @@
      }];
 }
 - (void)handleSIGNINResponse:(NSDictionary*)response
-{
-    NSLog(@"login Respose==%@",response);
-    
+{    
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
         [self GenrateNewToken];
@@ -102,11 +109,6 @@
         NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userdata];
         [currentDefaults setObject:data forKey:@"USERDATADICT"];
-
-        
-       // [[NSUserDefaults standardUserDefaults]setObject:userdata forKey:@"USERDATADICT"];
-        
-
     }
     else
     {
@@ -230,13 +232,16 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    cell=nil;
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell.
     cell.textLabel.text = [[CountryCodeDATA valueForKey:@"name"] objectAtIndex:indexPath.row];
-    
+    cell.textLabel.textColor=[UIColor whiteColor];
+    cell.backgroundColor=[UIColor clearColor];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

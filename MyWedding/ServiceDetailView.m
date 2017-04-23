@@ -28,7 +28,6 @@
     NSLog(@"detail data=%@",_detailData);
     Title_LBL.text=[_detailData valueForKey:@"name"];
     UINib *nib = [UINib nibWithNibName:@"ServiceDetailCELL" bundle:nil];
-  //  ServiceDetailCELL *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     [ServiceDetialTABLE registerNib:nib forCellReuseIdentifier:@"ServiceDetailCELL"];
     
     ServiceDetialTABLE.rowHeight = UITableViewAutomaticDimension;
@@ -83,6 +82,7 @@
     [cell.detailImage sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
     [cell.detailImage setShowActivityIndicatorView:YES];
     
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

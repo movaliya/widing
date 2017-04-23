@@ -27,7 +27,7 @@
     
     BOOL internet=[AppDelegate connectedToNetwork];
     if (internet)
-         [self getCoutryCode];
+         [self performSelector:@selector(getCoutryCode) withObject:nil afterDelay:0.0];
     else
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
    
@@ -213,13 +213,16 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
+    cell=nil;
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell.
     cell.textLabel.text = [[CountryCodeDATA valueForKey:@"name"] objectAtIndex:indexPath.row];
-    
+    cell.textLabel.textColor=[UIColor whiteColor];
+    cell.backgroundColor=[UIColor clearColor];
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -247,6 +250,8 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     PopupView.hidden=YES;
+    VerificationPOPupView.hidden=YES;
+    [VerificatonTXT resignFirstResponder];
     [self.mobile_TXT resignFirstResponder];
 }
 @end

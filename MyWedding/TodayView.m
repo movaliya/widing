@@ -20,8 +20,13 @@
 {
     [super viewDidLoad];
     [self.NotificationLabel setHidden:YES];
-    [self getTodayEvent];
    
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self performSelector:@selector(getTodayEvent) withObject:nil afterDelay:0.0];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    
     
     UINib *nib = [UINib nibWithNibName:@"TodayCELL" bundle:nil];
     TodayCELL *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
@@ -123,7 +128,7 @@
             NSLog(@"dic=%@",dics);
         }
     }
-    
+    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

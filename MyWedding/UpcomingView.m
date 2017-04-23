@@ -22,9 +22,14 @@
 {
     [super viewDidLoad];
     
-    
-     [self upComingEvent];
-    
+    [self.NotificationLabel setHidden:YES];
+
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+        [self performSelector:@selector(upComingEvent) withObject:nil afterDelay:0.0];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        
     UINib *nib = [UINib nibWithNibName:@"UpcomingCell" bundle:nil];
     UpcomingCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     _tableView.rowHeight = cell.frame.size.height;
@@ -61,11 +66,11 @@
          NSLog(@"TodayEventDATA count==%@",FutureEventDATA);
         if (FutureEventDATA.count>0)
         {
-           // [self.NotificationLabel setHidden:YES];
+            [self.NotificationLabel setHidden:YES];
         }
         else
         {
-           // [self.NotificationLabel setHidden:NO];
+            [self.NotificationLabel setHidden:NO];
         }
         [self.tableView reloadData];
     }
@@ -128,7 +133,7 @@
         }
         
     }
-       
+     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];  
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -48,11 +48,7 @@
     {
         Email_TXT.text=[userData valueForKey:@"email"];
     }
-   
-    
-    
-    
-    
+       
 }
 
 - (void)didReceiveMemoryWarning {

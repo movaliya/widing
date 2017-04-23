@@ -32,9 +32,10 @@
     
     BOOL internet=[AppDelegate connectedToNetwork];
     if (internet)
-        [self GetServicesList];
+        [self performSelector:@selector(GetServicesList) withObject:nil afterDelay:0.0];
     else
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    
     
     Title_LBL.text=self.TitleTXT;
     UINib *nib = [UINib nibWithNibName:@"ServiceListCELL" bundle:nil];
