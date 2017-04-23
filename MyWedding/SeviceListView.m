@@ -44,6 +44,8 @@
     ServiceListCELL *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     ListTableView.rowHeight = cell.frame.size.height;
     [ListTableView registerNib:nib forCellReuseIdentifier:@"ServiceListCELL"];
+    ListTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     
     HotelDescrition=[[NSMutableArray alloc]initWithObjects:@"Situated on the shores of West Bay and the sparkling blue waters of the Arabian Gulf, the landmark 5-star Sheraton Grand Doha has been restored to its former glory, preserving its authenticity while cutting-edge amenities and facilities cater to today’s international traveller.\nThe hotel is home to ten restaurants, bars and lounges including Latino Steakhouse, one of the best South American restaurants in the city, the truly Italian La Veranda and Irish Harp, Doha’s popular Irish pub.\nRefresh your taste buds with our two new restaurants, Nusr-Et Steakhouse and Em-Sherif  (coming soon) replacing your old favourites Al Maskar and Al Shaheen!",@"preserving its authenticity while cutting-edge amenities and facilities cater to today’s international traveller.\nThe hotel is home to ten restaurants, bars and lounges including Latino Steakhouse, one of the best South American restaurants in the city, the truly Italian La Veranda and Irish Harp,",nil];
 }
@@ -119,6 +121,7 @@
     [cell.ServiceImage setShowActivityIndicatorView:YES];
     
     [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    
     
     return cell;
 }
