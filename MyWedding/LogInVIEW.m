@@ -109,6 +109,8 @@
         NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userdata];
         [currentDefaults setObject:data forKey:@"USERDATADICT"];
+        MobileTXT.text=@"";
+        PasswordTXT.text=@"";
     }
     else
     {

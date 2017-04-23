@@ -31,7 +31,7 @@
 
 - (IBAction)ChangePassword_Action:(id)sender
 {
-    ChangePasswordView.hidden=NO;
+   // ChangePasswordView.hidden=NO;
 }
 
 - (IBAction)ShareApp_Action:(id)sender
@@ -41,10 +41,64 @@
 
 - (IBAction)SignOut_Action:(id)sender
 {
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:@"Are you sure want to Logout?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Logout",nil];
+    alert.tag=50;
+    [alert show];
 }
-
-
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    // the user clicked Logout
+    if (alertView.tag==50)
+    {
+        if (buttonIndex == 1)
+        {
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                [self LogoutService];
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        }
+    }
+}
+-(void)LogoutService
+{
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [currentDefaults objectForKey:@"USERDATADICT"];
+    NSDictionary* userData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSString *cutmrID=[userData valueForKey:@"id"];
+    
+    NSString *newToken=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:newToken  forKey:@"X-API-KEY"];
+    [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
+    [dictParams setObject:cutmrID  forKey:@"customer_id"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",logoutURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleLogoutResponse:response];
+     }];
+}
+- (void)handleLogoutResponse:(NSDictionary*)response
+{
+    NSLog(@"reset Respose==%@",response);
+    
+    if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
+    {
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"USERDATADICT"];
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"USERTOKEN"];
+        [self.navigationController popToRootViewControllerAnimated:NO];
+       [AppDelegate showErrorMessageWithTitle:@"Success" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
+}
 - (IBAction)Back_Btn_Action:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -72,20 +126,64 @@
     }
     else
     {
-        if ([NewPass_TXT.text isEqualToString:ConfirmPass_TXT.text])
-        {
-            
-        }
-        else
+        if (![NewPass_TXT.text isEqualToString:ConfirmPass_TXT.text])
         {
              [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"New password and Confirm password is not same" delegate:nil];
         }
-        
+        else
+        {
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                 [self ResetPasswrdMethod];
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+           
+        }
     }
 }
+-(void)ResetPasswrdMethod
+{
+    
+    NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *data = [currentDefaults objectForKey:@"USERDATADICT"];
+    NSDictionary* userData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    NSString *cutmrID=[userData valueForKey:@"id"];
+    
+    NSString *newToken=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:newToken  forKey:@"X-API-KEY"];
+    [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
+    [dictParams setObject:cutmrID  forKey:@"customer_id"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",changePasswordURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleRestPassResponse:response];
+     }];
+}
 
+- (void)handleRestPassResponse:(NSDictionary*)response
+{
+    NSLog(@"reset Respose==%@",response);
+    
+    if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
+    {
+        OldPass_TXT.text=@"";
+        NewPass_TXT.text=@"";
+        ConfirmPass_TXT.text=@"";
+        ChangePasswordView.hidden=YES;
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
+}
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+    OldPass_TXT.text=@"";
+    NewPass_TXT.text=@"";
+    ConfirmPass_TXT.text=@"";
+    
     ChangePasswordView.hidden=YES;
     [OldPass_TXT resignFirstResponder];
     [NewPass_TXT resignFirstResponder];
