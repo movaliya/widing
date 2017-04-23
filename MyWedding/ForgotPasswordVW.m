@@ -8,6 +8,7 @@
 
 #import "ForgotPasswordVW.h"
 #import "MyWedding.pch"
+#import "LogInVIEW.h"
 @interface ForgotPasswordVW ()
 {
     NSMutableDictionary *CountryCodeDATA;
@@ -113,6 +114,7 @@
     
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
+         [AppDelegate showErrorMessageWithTitle:@"Success" message:[response objectForKey:@"MSG"] delegate:nil];
         UserIDStr=[NSString stringWithFormat:@"%@",[[response valueForKey:@"DATA"] valueForKey:@"id"]];
         VerificatoinView.hidden=NO;
     }
@@ -122,30 +124,92 @@
     }
 }
 
-- (IBAction)CountryCode_Action:(id)sender
-{
-}
-
-- (IBAction)BackBtn_Action:(id)sender
-{
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)Submit_Click:(id)sender
 {
     [Verification_TXT resignFirstResponder];
-    VerificatoinView.hidden=YES;
+    [self.Cod_TXT resignFirstResponder];
+    [self.NewPasswrd_TXT resignFirstResponder];
+    [self.confirmPasswrd_TXT resignFirstResponder];
+    
+    if ([self.Cod_TXT.text isEqualToString:@""])
+    {
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter verification mobile number code" delegate:nil];
+    }
+    else if ([self.NewPasswrd_TXT.text isEqualToString:@""])
+    {
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Password" delegate:nil];
+    }
+    else if ([self.confirmPasswrd_TXT.text isEqualToString:@""])
+    {
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Confirm password" delegate:nil];
+    }
+    else
+    {
+        if (![self.NewPasswrd_TXT.text isEqualToString:self.confirmPasswrd_TXT.text])
+        {
+            [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Password does not match the confirm password." delegate:nil];
+        }
+        else
+        {
+            BOOL internet=[AppDelegate connectedToNetwork];
+            if (internet)
+                [self ResetPasswrdMethod];
+            else
+                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        }
+    }
+    
 }
+-(void)ResetPasswrdMethod
+{
+    
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
+    [dictParams setObject:UserIDStr  forKey:@"customer_id"];
+    [dictParams setObject:self.Cod_TXT.text  forKey:@"code"];
+    [dictParams setObject:self.NewPasswrd_TXT.text  forKey:@"password"];
+    [dictParams setObject:self.confirmPasswrd_TXT.text  forKey:@"confirm_password"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",ResetPasswordURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleRestPassResponse:response];
+     }];
+}
+
+- (void)handleRestPassResponse:(NSDictionary*)response
+{
+    NSLog(@"reset Respose==%@",response);
+    
+    if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
+    {
+         VerificatoinView.hidden=YES;
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                        message:[response objectForKey:@"MSG"]
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
+}
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // the user clicked OK
+    if (buttonIndex == 0)
+    {
+        LogInVIEW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogInVIEW"];
+        [self.navigationController pushViewController:vcr animated:YES];
+    }
+}
+
 - (IBAction)CountryBTN_Click:(id)sender
 {
     CountryPopup.hidden=NO;
+    [MobileNumber_TXT resignFirstResponder];
 }
 
 #pragma mark UITableView delegate
@@ -198,10 +262,27 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     CountryPopup.hidden=YES;
-    VerificatoinView.hidden=YES;
+    //VerificatoinView.hidden=YES;
     [MobileNumber_TXT resignFirstResponder];
     [Verification_TXT resignFirstResponder];
 }
+- (IBAction)CountryCode_Action:(id)sender
+{
+    
+}
+
+- (IBAction)BackBtn_Action:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
 
 
 @end

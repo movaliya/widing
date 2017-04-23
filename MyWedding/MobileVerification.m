@@ -242,9 +242,11 @@
 - (IBAction)CountryBTN_Click:(id)sender
 {
     PopupView.hidden=NO;
+    [self.mobile_TXT resignFirstResponder];
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
     PopupView.hidden=YES;
+    [self.mobile_TXT resignFirstResponder];
 }
 @end

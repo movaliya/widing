@@ -249,9 +249,13 @@
 - (IBAction)CountryBTN_Click:(id)sender
 {
     PopUpView.hidden=NO;
+    [MobileTXT resignFirstResponder];
+    [PasswordTXT resignFirstResponder];
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
      PopUpView.hidden=YES;
+    [MobileTXT resignFirstResponder];
+    [PasswordTXT resignFirstResponder];
 }
 @end

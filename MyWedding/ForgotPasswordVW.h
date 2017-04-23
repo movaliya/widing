@@ -25,4 +25,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *Country_TBL;
 @property (strong, nonatomic) IBOutlet UIView *CountryPopup;
+@property (weak, nonatomic) IBOutlet UITextField *Cod_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *NewPasswrd_TXT;
+@property (weak, nonatomic) IBOutlet UITextField *confirmPasswrd_TXT;
 @end

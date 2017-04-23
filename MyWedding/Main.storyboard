@@ -1514,7 +1514,7 @@
                                                 </constraints>
                                                 <color key="textColor" red="0.77647058820000003" green="0.78039215689999997" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="0.81960784310000001" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1533,13 +1533,13 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bfb-IS-11C">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bfb-IS-11C">
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="50N-ou-fCV"/>
                                                 </constraints>
                                                 <color key="textColor" red="0.77647058820000003" green="0.78039215689999997" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="0.81960784310000001" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1649,13 +1649,16 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="Cod_TXT" destination="OeI-yX-1st" id="pLO-hR-HZ0"/>
                         <outlet property="CodeBtn" destination="aD4-ea-3a3" id="fl6-q7-awQ"/>
                         <outlet property="CountryPopup" destination="kfE-yE-miC" id="yQ8-Xc-rCi"/>
                         <outlet property="Country_BTN" destination="aD4-ea-3a3" id="hA4-P3-NOo"/>
                         <outlet property="Country_TBL" destination="FHY-r9-42F" id="bnM-8D-Ob6"/>
                         <outlet property="MobileNumber_TXT" destination="If3-SK-9uh" id="xzb-8Q-b2s"/>
+                        <outlet property="NewPasswrd_TXT" destination="D6E-LJ-92g" id="9yd-Rq-C0h"/>
                         <outlet property="Verification_TXT" destination="OeI-yX-1st" id="utK-Mt-e0S"/>
                         <outlet property="VerificatoinView" destination="CUb-e3-Mgd" id="ZzR-4M-7NF"/>
+                        <outlet property="confirmPasswrd_TXT" destination="Bfb-IS-11C" id="qfA-Cg-ZKp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bo9-rE-WkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
