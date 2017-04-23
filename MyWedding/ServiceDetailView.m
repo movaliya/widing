@@ -28,7 +28,7 @@
     NSLog(@"detail data=%@",_detailData);
     Title_LBL.text=[_detailData valueForKey:@"name"];
     UINib *nib = [UINib nibWithNibName:@"ServiceDetailCELL" bundle:nil];
-    ServiceDetailCELL *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
+  //  ServiceDetailCELL *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     [ServiceDetialTABLE registerNib:nib forCellReuseIdentifier:@"ServiceDetailCELL"];
     
     ServiceDetialTABLE.rowHeight = UITableViewAutomaticDimension;
@@ -78,11 +78,7 @@
     cell.DetailURL.text=[_detailData valueForKey:@"url"];
     cell.Description.text=[_detailData valueForKey:@"details"];
     
-    cell.detailImage.layer.backgroundColor=[[UIColor clearColor] CGColor];
-    cell.detailImage.layer.cornerRadius=36;
-    cell.detailImage.layer.borderWidth=2.0;
-    cell.detailImage.layer.masksToBounds = YES;
-    cell.detailImage.layer.borderColor=[[UIColor blackColor] CGColor];
+    
     NSString *Urlstr=[_detailData valueForKey:@"img"];
     [cell.detailImage sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
     [cell.detailImage setShowActivityIndicatorView:YES];

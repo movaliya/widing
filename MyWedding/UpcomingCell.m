@@ -9,10 +9,14 @@
 #import "UpcomingCell.h"
 
 @implementation UpcomingCell
-
-- (void)awakeFromNib {
+@synthesize EventImage;
+- (void)awakeFromNib
+{
     [super awakeFromNib];
-    // Initialization code
+    EventImage.layer.cornerRadius=50;
+    EventImage.layer.borderWidth=2.0;
+    EventImage.layer.masksToBounds = YES;
+    EventImage.layer.borderColor=[[UIColor blackColor] CGColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

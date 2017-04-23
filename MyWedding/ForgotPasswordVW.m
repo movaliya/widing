@@ -11,7 +11,7 @@
 @interface ForgotPasswordVW ()
 {
     NSMutableDictionary *CountryCodeDATA;
-    NSString *CountryCodeId;
+    NSString *CountryCodeId,*UserIDStr;;
 }
 @end
 
@@ -32,7 +32,6 @@
 
 -(void)getCoutryCode
 {
-    
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
     [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
@@ -74,17 +73,17 @@
     
 }
 
+
 - (IBAction)Verified_Action:(id)sender
 {
-    VerificatoinView.hidden=NO;
+    [MobileNumber_TXT resignFirstResponder];
     
     if ([MobileNumber_TXT.text isEqualToString:@""])
     {        
-       // [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Mobile Number" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Mobile Number" delegate:nil];
     }
     else
     {
-        
         BOOL internet=[AppDelegate connectedToNetwork];
         if (internet)
             [self CallForgotPass];
@@ -95,11 +94,10 @@
 
 -(void)CallForgotPass
 {
-   
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
     [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
-    [dictParams setObject:@"99"  forKey:@"country_id"];
+    [dictParams setObject:CountryCodeId  forKey:@"country_id"];
     [dictParams setObject:MobileNumber_TXT.text  forKey:@"mobile"];
     
     
@@ -115,7 +113,8 @@
     
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
-        
+        UserIDStr=[NSString stringWithFormat:@"%@",[[response valueForKey:@"DATA"] valueForKey:@"id"]];
+        VerificatoinView.hidden=NO;
     }
     else
     {
@@ -193,6 +192,15 @@
     [Country_BTN setTitle:[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     CountryCodeId=[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:indexPath.row];
     CountryPopup.hidden=YES;
+}
+
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    CountryPopup.hidden=YES;
+    VerificatoinView.hidden=YES;
+    [MobileNumber_TXT resignFirstResponder];
+    [Verification_TXT resignFirstResponder];
 }
 
 

@@ -10,7 +10,6 @@
 
 @interface SeviceListView : UIViewController
 {
-    NSMutableArray *HotelDescrition;
     NSMutableDictionary *ServicesListDATA,*MainServiceDIC;
 }
 @property (strong, nonatomic) NSString *TitleTXT;
