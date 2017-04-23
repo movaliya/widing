@@ -30,6 +30,10 @@
 #define ForgotPasswordURL @"http://dawate.com/api/user/forgotPassword"
 #define registerURL @"http://dawate.com/api/user/register"
 #define GenrateNewTokenURL @"http://dawate.com/api/key/index"
+#define MobileVerifiedURL @"http://dawate.com/api/user/sendVerification"
+#define CheckVerifiedCodeURL @"http://dawate.com/api/user/checkVerification"
+
+
 
 //Home Services
 #define CategoriesListURL @"http://dawate.com/api/index.php/home/getCategories"

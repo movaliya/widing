@@ -8,6 +8,8 @@
 
 #import "RegistrationVW.h"
 #import "MyWedding.pch"
+#import "MBXFreeButtonsViewController.h"
+#import "LogInVIEW.h"
 @interface RegistrationVW ()<UIPickerViewDataSource,UIPickerViewDelegate>
 {
     UIPickerView *myPickerView;
@@ -66,6 +68,8 @@
 
 - (IBAction)SignUp_Action:(id)sender
 {
+    [self HideKeyboard];
+    
     if ([FirstNameTXT.text isEqualToString:@""])
     {
         [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter First Name" delegate:nil];
@@ -152,7 +156,7 @@
     [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
     [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
     
-    [dictParams setObject:@"102"  forKey:@"customer_id"]; // Custmer ID to Replace dynamic after testing complete
+    [dictParams setObject:self.CustomerID  forKey:@"customer_id"]; // Custmer ID to Replace dynamic after testing complete
     [dictParams setObject:FirstNameTXT.text  forKey:@"first_name"];
     [dictParams setObject:SecondNameTXT.text  forKey:@"second_name"];
     [dictParams setObject:MiddleNameTXT.text  forKey:@"middle_name"];
@@ -178,19 +182,28 @@
 - (void)handleRegisterResponse:(NSDictionary*)response
 {
     NSLog(@"Respose==%@",response);
-    
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
-        [[NSUserDefaults standardUserDefaults]setObject:response forKey:@"LoginUserDic"];
-        //[self.navigationController popViewControllerAnimated:YES];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+                                                        message:[response objectForKey:@"MSG"]
+                                                       delegate:self
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     }
     else
     {
         [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
     }
-    
 }
-
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    // the user clicked OK
+    if (buttonIndex == 0)
+    {
+        LogInVIEW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"LogInVIEW"];
+        [self.navigationController pushViewController:vcr animated:YES];
+    }
+}
 - (IBAction)BackBtn_action:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -201,6 +214,20 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)HideKeyboard
+{
+    [FirstNameTXT resignFirstResponder];
+    [SecondNameTXT resignFirstResponder];
+    [MiddleNameTXT resignFirstResponder];
+    [LastNameTXT resignFirstResponder];
+    [PasswordTXT resignFirstResponder];
+    [EmailTXT resignFirstResponder];
+    [VillNoTXT resignFirstResponder];
+    [AreaTXT resignFirstResponder];
+    [StreetNameTXT resignFirstResponder];
+    [DateOfYearTXT resignFirstResponder];
+    [ZoneTXT resignFirstResponder];
+    [ConfrimPasswordTXT resignFirstResponder];
+}
 
 @end

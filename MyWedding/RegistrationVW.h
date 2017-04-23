@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface RegistrationVW : UIViewController
+
+
+@property (strong, nonatomic) NSString *CustomerID;
+
 @property (weak, nonatomic) IBOutlet UITextField *FirstNameTXT;
 @property (weak, nonatomic) IBOutlet UITextField *SecondNameTXT;
 @property (weak, nonatomic) IBOutlet UITextField *MiddleNameTXT;

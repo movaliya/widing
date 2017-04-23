@@ -414,7 +414,7 @@
                                     <constraint firstItem="6hB-R3-HwC" firstAttribute="leading" secondItem="n44-s2-FoG" secondAttribute="leading" constant="18" id="BcY-8T-7nl"/>
                                     <constraint firstItem="gQT-Lc-MFA" firstAttribute="top" secondItem="9fZ-U5-PpI" secondAttribute="bottom" id="EMi-n7-dFa"/>
                                     <constraint firstItem="l3w-8B-1R8" firstAttribute="top" secondItem="n44-s2-FoG" secondAttribute="top" id="HvE-GW-VJG"/>
-                                    <constraint firstItem="1tg-bc-ta5" firstAttribute="leading" secondItem="ZQV-dh-pDB" secondAttribute="trailing" constant="2" id="IhZ-1T-6BD"/>
+                                    <constraint firstItem="1tg-bc-ta5" firstAttribute="leading" secondItem="ZQV-dh-pDB" secondAttribute="trailing" constant="5" id="IhZ-1T-6BD"/>
                                     <constraint firstItem="9fZ-U5-PpI" firstAttribute="top" secondItem="6hB-R3-HwC" secondAttribute="bottom" constant="27" id="Mmf-Xs-dsF"/>
                                     <constraint firstAttribute="trailing" secondItem="gQT-Lc-MFA" secondAttribute="trailing" constant="18" id="Rxg-4f-AjV"/>
                                     <constraint firstAttribute="height" constant="140" id="aJf-j7-RxR"/>
@@ -662,7 +662,6 @@
                                 </state>
                                 <connections>
                                     <action selector="Register_Click:" destination="eku-Q3-LSS" eventType="touchUpInside" id="2Ep-Ha-jMr"/>
-                                    <action selector="Verified_Action:" destination="4UP-JQ-PG0" eventType="touchUpInside" id="m79-LQ-IJz"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPF-yz-Zyz">
@@ -821,7 +820,7 @@
                             <constraint firstItem="dPF-yz-Zyz" firstAttribute="leading" secondItem="Rcv-Qw-dZo" secondAttribute="leading" id="iF3-UF-Nw5"/>
                             <constraint firstAttribute="trailing" secondItem="iud-RP-qW8" secondAttribute="trailing" constant="18" id="iZA-gq-bCZ"/>
                             <constraint firstItem="aj6-48-kkn" firstAttribute="top" secondItem="U6o-NH-syE" secondAttribute="bottom" constant="30" id="iuR-w4-3bR"/>
-                            <constraint firstItem="G0B-z0-jsA" firstAttribute="leading" secondItem="syn-ci-uVK" secondAttribute="trailing" constant="2" id="kOm-AW-F1D"/>
+                            <constraint firstItem="G0B-z0-jsA" firstAttribute="leading" secondItem="syn-ci-uVK" secondAttribute="trailing" constant="5" id="kOm-AW-F1D"/>
                             <constraint firstItem="dPF-yz-Zyz" firstAttribute="top" secondItem="Rcv-Qw-dZo" secondAttribute="top" id="nCN-gq-XF8"/>
                             <constraint firstItem="8f8-wA-WLt" firstAttribute="leading" secondItem="Rcv-Qw-dZo" secondAttribute="leading" id="uvs-lk-c4t"/>
                         </constraints>
@@ -832,6 +831,7 @@
                         <outlet property="PopupView" destination="dPF-yz-Zyz" id="SEY-2x-U3W"/>
                         <outlet property="VerificationPOPupView" destination="8f8-wA-WLt" id="69L-3w-bWm"/>
                         <outlet property="VerificatonTXT" destination="H7U-jd-SF7" id="Now-7J-Bi9"/>
+                        <outlet property="mobile_TXT" destination="G0B-z0-jsA" id="UZv-Xx-5o4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NeF-TC-OCH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1017,7 +1017,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="0.81960784313725488" green="0.81960784313725488" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -1042,7 +1042,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="keyPath">
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
                                                         <color key="value" red="0.81960784310000001" green="0.81960784310000001" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
@@ -1644,7 +1644,7 @@
                             <constraint firstAttribute="trailing" secondItem="kfE-yE-miC" secondAttribute="trailing" id="hDv-hv-cB4"/>
                             <constraint firstItem="Od9-mn-i0f" firstAttribute="leading" secondItem="0jP-Vq-2bO" secondAttribute="leading" id="jGF-ow-swg"/>
                             <constraint firstItem="CUb-e3-Mgd" firstAttribute="leading" secondItem="0jP-Vq-2bO" secondAttribute="leading" id="o9T-uf-eXK"/>
-                            <constraint firstItem="If3-SK-9uh" firstAttribute="leading" secondItem="aD4-ea-3a3" secondAttribute="trailing" constant="2" id="w4M-Up-DT5"/>
+                            <constraint firstItem="If3-SK-9uh" firstAttribute="leading" secondItem="aD4-ea-3a3" secondAttribute="trailing" constant="5" id="w4M-Up-DT5"/>
                             <constraint firstAttribute="trailing" secondItem="qCM-Bp-7IG" secondAttribute="trailing" id="xre-Xx-CDq"/>
                         </constraints>
                     </view>

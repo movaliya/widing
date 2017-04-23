@@ -12,7 +12,9 @@
 {
     NSMutableDictionary *CountryCodeDATA;
     NSString *CountryCodeId;
+    NSString *customerId;
 }
+@property (weak, nonatomic) IBOutlet UITextField *mobile_TXT;
 @property (strong, nonatomic) IBOutlet UIView *PopupView;
 @property (strong, nonatomic) IBOutlet UITableView *PopupTBL;
 - (IBAction)Register_Click:(id)sender;

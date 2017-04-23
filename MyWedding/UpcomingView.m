@@ -29,6 +29,7 @@
     UpcomingCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
     _tableView.rowHeight = cell.frame.size.height;
     [_tableView registerNib:nib forCellReuseIdentifier:@"UpcomingCell"];
+        
 }
 -(void)upComingEvent
 {
@@ -127,7 +128,7 @@
             NSString *Urlstr=[dics valueForKey:@"url"];
             [cell.EventImage sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
             [cell.EventImage setShowActivityIndicatorView:YES];
-            NSLog(@"dic=%@",dics);
+           // NSLog(@"dic=%@",dics);
         }
         
     }

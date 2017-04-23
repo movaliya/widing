@@ -24,7 +24,13 @@
     [super viewDidLoad];
     PopupView.hidden=YES;
     VerificationPOPupView.hidden=YES;
-    [self getCoutryCode];
+    
+    BOOL internet=[AppDelegate connectedToNetwork];
+    if (internet)
+         [self getCoutryCode];
+    else
+        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+   
     // Do any additional setup after loading the view.
 }
 
@@ -72,20 +78,113 @@
     
 }
 
-- (IBAction)BackBtn_Action:(id)sender
+#pragma mark - Register Mobile
+- (IBAction)Register_Click:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+     [self.mobile_TXT resignFirstResponder];
+    if ([self.mobile_TXT.text isEqualToString:@""])
+    {
+        //[self ShowPOPUP];
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Mobile Number" delegate:nil];
+    }
+    else if (Country_BTN.titleLabel.text.length == 0)
+    {
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Country Code." delegate:nil];
+    }
+    else
+    {
+        
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self mobieVerfifiedFoResigter];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    }
 }
 
-- (void)didReceiveMemoryWarning
+-(void)mobieVerfifiedFoResigter
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
+    [dictParams setObject:self.mobile_TXT.text  forKey:@"mobile"];
+    [dictParams setObject:CountryCodeId  forKey:@"country_id"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",MobileVerifiedURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleMobileVerfyResponse:response];
+     }];
+}
+- (void)handleMobileVerfyResponse:(NSDictionary*)response
+{
+    NSLog(@"register mobile Respose==%@",response);
+    
+    if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
+    {
+        customerId=[[response valueForKey:@"DATA"] valueForKey:@"id"];
+        NSLog(@"customerId==%@",customerId);
+         VerificationPOPupView.hidden=NO;
+         [AppDelegate showErrorMessageWithTitle:@"SEND" message:[response objectForKey:@"MSG"] delegate:nil];
+        
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
 }
 
-- (IBAction)CountryBTN_Click:(id)sender
+#pragma mark -Verfied Code
+- (IBAction)Verified_Click:(id)sender
 {
-    PopupView.hidden=NO;
+    [self.VerificatonTXT resignFirstResponder];
+    if ([self.VerificatonTXT.text isEqualToString:@""])
+    {
+        //[self ShowPOPUP];
+        
+        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter verification mobile number code" delegate:nil];
+    }
+    else
+    {
+        BOOL internet=[AppDelegate connectedToNetwork];
+        if (internet)
+            [self VerifiedCode:customerId];
+        else
+            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+    }
+    
+}
+-(void)VerifiedCode:(NSString *)cutomerID
+{
+    NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
+    [dictParams setObject:X_API_KEY  forKey:@"X-API-KEY"];
+    [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
+    [dictParams setObject:VerificatonTXT.text  forKey:@"code"];
+    [dictParams setObject:cutomerID  forKey:@"customer_id"];
+    
+    [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",CheckVerifiedCodeURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
+     {
+         [self handleRegisterMobileResponse:response];
+     }];
+}
+- (void)handleRegisterMobileResponse:(NSDictionary*)response
+{
+    NSLog(@"go nxt regstr Respose==%@",response);
+    
+    if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
+    {
+        [VerificatonTXT resignFirstResponder];
+        VerificationPOPupView.hidden=YES;
+        RegistrationVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RegistrationVW"];
+        vcr.CustomerID=customerId;
+        
+        [self.navigationController pushViewController:vcr animated:YES];
+        [AppDelegate showErrorMessageWithTitle:@"Success" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
+    else
+    {
+        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+    }
 }
 
 #pragma mark UITableView delegate
@@ -129,19 +228,23 @@
     CountryCodeId=[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:indexPath.row];
     PopupView.hidden=YES;
 }
-
-
-- (IBAction)Verified_Click:(id)sender
+- (IBAction)BackBtn_Action:(id)sender
 {
-    [VerificatonTXT resignFirstResponder];
-    VerificationPOPupView.hidden=YES;
-    RegistrationVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"RegistrationVW"];
-    [self.navigationController pushViewController:vcr animated:YES];
-}
-- (IBAction)Register_Click:(id)sender
-{
-    VerificationPOPupView.hidden=NO;
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
+- (IBAction)CountryBTN_Click:(id)sender
+{
+    PopupView.hidden=NO;
+}
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    PopupView.hidden=YES;
+}
 @end
