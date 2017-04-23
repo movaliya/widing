@@ -9,10 +9,15 @@
 #import "ServiceDetailCELL.h"
 
 @implementation ServiceDetailCELL
+@synthesize detailImage;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    detailImage.layer.cornerRadius=37.5f;
+    detailImage.layer.borderWidth=2.0;
+    detailImage.layer.masksToBounds = YES;
+    detailImage.layer.borderColor=[[UIColor blackColor] CGColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

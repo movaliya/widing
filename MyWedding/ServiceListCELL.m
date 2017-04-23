@@ -9,10 +9,17 @@
 #import "ServiceListCELL.h"
 
 @implementation ServiceListCELL
-
-- (void)awakeFromNib {
+@synthesize ServiceImage;
+- (void)awakeFromNib
+{
     [super awakeFromNib];
-    // Initialization code
+    ServiceImage.layer.cornerRadius=37.5f;
+    ServiceImage.layer.borderWidth=2.0;
+    ServiceImage.layer.masksToBounds = YES;
+    ServiceImage.layer.borderColor=[[UIColor blackColor] CGColor];
+    
+  
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

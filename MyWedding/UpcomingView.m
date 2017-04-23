@@ -113,11 +113,7 @@
     cell.DateLBL.text=[[FutureEventDATA valueForKey:@"date"]objectAtIndex:indexPath.section];
     cell.timeLBL.text=[[FutureEventDATA valueForKey:@"contact"]objectAtIndex:indexPath.section];
     
-    cell.EventImage.layer.backgroundColor=[[UIColor clearColor] CGColor];
-    cell.EventImage.layer.cornerRadius=36;
-    cell.EventImage.layer.borderWidth=2.0;
-    cell.EventImage.layer.masksToBounds = YES;
-    cell.EventImage.layer.borderColor=[[UIColor blackColor] CGColor];
+    
     
     NSArray *dic;
     for (dic in [FutureEventDATA valueForKey:@"img"])
