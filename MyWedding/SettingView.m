@@ -31,7 +31,7 @@
 
 - (IBAction)ChangePassword_Action:(id)sender
 {
-   // ChangePasswordView.hidden=NO;
+    ChangePasswordView.hidden=NO;
 }
 
 - (IBAction)ShareApp_Action:(id)sender
@@ -155,6 +155,9 @@
     [dictParams setObject:newToken  forKey:@"X-API-KEY"];
     [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
     [dictParams setObject:cutmrID  forKey:@"customer_id"];
+    [dictParams setObject:OldPass_TXT.text  forKey:@"old_password"];
+    [dictParams setObject:NewPass_TXT.text  forKey:@"new_password"];
+    [dictParams setObject:ConfirmPass_TXT.text  forKey:@"confirm_password"];
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",changePasswordURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
      {
@@ -172,6 +175,7 @@
         NewPass_TXT.text=@"";
         ConfirmPass_TXT.text=@"";
         ChangePasswordView.hidden=YES;
+         [AppDelegate showErrorMessageWithTitle:@"Success" message:[response objectForKey:@"MSG"] delegate:nil];
     }
     else
     {

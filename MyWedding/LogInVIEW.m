@@ -36,7 +36,7 @@
         }
         else
         {
-            [self performSelector:@selector(getCoutryCode) withObject:nil afterDelay:0.0];
+            [self performSelector:@selector(getCoutryCode) withObject:nil afterDelay:2.0];
         }
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
