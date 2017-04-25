@@ -132,6 +132,7 @@
 		530BD1271E938EB200DEC9DE /* SettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingView.h; sourceTree = "<group>"; };
 		530BD1281E938EB200DEC9DE /* SettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingView.m; sourceTree = "<group>"; };
 		530BD1301E93C95000DEC9DE /* Settingrectangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settingrectangle.png; sourceTree = "<group>"; };
+		530D67781EAF348300893A9E /* MyWedding.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyWedding.entitlements; sourceTree = "<group>"; };
 		534EF7F51EA9CC0C00500611 /* VerificationCodeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeScreen.h; sourceTree = "<group>"; };
 		534EF7F61EA9CC0C00500611 /* VerificationCodeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeScreen.m; sourceTree = "<group>"; };
 		53672F901EAB289800B38159 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -416,6 +417,7 @@
 		B16A22821E8F753D00F0E3B3 /* MyWedding */ = {
 			isa = PBXGroup;
 			children = (
+				530D67781EAF348300893A9E /* MyWedding.entitlements */,
 				530BD0FD1E935E2500DEC9DE /* Cell */,
 				530AA6411EA8DBB1005B527A /* Comman Class */,
 				530AA6381EA89BF2005B527A /* LoginReg */,
@@ -700,6 +702,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7PFD68G63X;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -933,6 +940,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyWedding/MyWedding.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7PFD68G63X;
 				INFOPLIST_FILE = MyWedding/Info.plist;
@@ -949,6 +957,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MyWedding/MyWedding.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7PFD68G63X;
 				INFOPLIST_FILE = MyWedding/Info.plist;
