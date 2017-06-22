@@ -61,6 +61,10 @@
    {
         [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Country Code." delegate:nil];
     }
+   else if (CountryCodeId.length == 0)
+   {
+       [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Server down please try after some time." delegate:nil];
+   }
     else
     {
             if ([PasswordTXT.text isEqualToString:@""])
