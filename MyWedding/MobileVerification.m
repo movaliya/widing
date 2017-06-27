@@ -67,7 +67,7 @@
         // NSLog(@"code=%@",[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:index]);
         
         [Country_BTN setTitle:[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:index] forState:UIControlStateNormal];
-        CountryCodeId=[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:index];
+        CountryCodeId=[NSString stringWithFormat:@"%@",[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:index]];
         
         [PopupTBL reloadData];
     }

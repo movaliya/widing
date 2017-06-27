@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *EventName;
 @property (weak, nonatomic) IBOutlet UILabel *DateLBL;
 @property (weak, nonatomic) IBOutlet UILabel *timeLBL;
+@property (weak, nonatomic) IBOutlet UIButton *CalenderBTN;
 
 @end

@@ -11,7 +11,8 @@
 @interface TodayView : UIViewController
 {
     NSMutableDictionary *TodayEventDATA;
-   
+    NSInteger SelectEventIndex;
+
 }
 @property (weak, nonatomic) IBOutlet UILabel *NotificationLabel;
 @property (weak, nonatomic) IBOutlet UITableView *TodayTableView;

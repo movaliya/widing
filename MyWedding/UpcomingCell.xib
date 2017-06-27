@@ -100,6 +100,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="CalenderBTN" destination="7M8-Hk-0kT" id="M80-dg-Ad6"/>
                 <outlet property="DateLBL" destination="3iH-Jx-9ic" id="A6i-ya-L2F"/>
                 <outlet property="EventImage" destination="IH2-X8-zex" id="Jp3-eV-Qz3"/>
                 <outlet property="EventName" destination="isk-JZ-cTf" id="Wyy-P1-P7p"/>

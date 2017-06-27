@@ -9,8 +9,10 @@
 #import "UpcomingView.h"
 #import "UpcomingCell.h"
 #import "MyWedding.pch"
+#import <EventKitUI/EventKitUI.h>
+#import "UpcomingDetailVW.h"
 
-@interface UpcomingView ()
+@interface UpcomingView ()<EKEventViewDelegate,EKEventEditViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 
@@ -118,7 +120,8 @@
     cell.address.text=[[FutureEventDATA valueForKey:@"address"]objectAtIndex:indexPath.section];
     cell.DateLBL.text=[[FutureEventDATA valueForKey:@"date"]objectAtIndex:indexPath.section];
     cell.timeLBL.text=[[FutureEventDATA valueForKey:@"contact"]objectAtIndex:indexPath.section];
-    
+    [cell.CalenderBTN addTarget:self action:@selector(CalenBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    cell.CalenderBTN.tag=indexPath.section;
     
     
     NSArray *dic;
@@ -131,10 +134,16 @@
             [cell.EventImage setShowActivityIndicatorView:YES];
            // NSLog(@"dic=%@",dics);
         }
-        
     }
      [cell setSelectionStyle:UITableViewCellSelectionStyleNone];  
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UpcomingDetailVW *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"UpcomingDetailVW"];
+    vcr.EventID=[NSString stringWithFormat:@"%@",[[FutureEventDATA valueForKey:@"id"]objectAtIndex:indexPath.section]];
+    [self.navigationController pushViewController:vcr animated:YES];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -142,6 +151,134 @@
     return 114;
     
 }
+-(void)CalenBtnClick:(id)sender
+{
+    UIButton *senderButton = (UIButton *)sender;
+    SelectEventIndex=senderButton.tag;
+    
+    EKEventStore *store = [[EKEventStore alloc] init];
+    
+    if([store respondsToSelector:@selector(requestAccessToEntityType:completion:)])
+    {
+        // iOS 6
+        [store requestAccessToEntityType:EKEntityTypeEvent
+                              completion:^(BOOL granted, NSError *error)
+         {
+             if (granted)
+             {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     [self createEventAndPresentViewController:store];
+                 });
+             }
+         }];
+    } else
+    {
+        // iOS 5
+        [self createEventAndPresentViewController:store];
+    }
+
+}
+- (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)createEventAndPresentViewController:(EKEventStore *)store
+{
+    EKEvent *event = [self findOrCreateEvent:store];
+    
+    EKEventEditViewController *controller = [[EKEventEditViewController alloc] init];
+    controller.event = event;
+    controller.eventStore = store;
+    controller.editViewDelegate = self;
+    
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (EKEvent *)findOrCreateEvent:(EKEventStore* )store
+{
+    
+    
+   
+    NSString *title =  [[FutureEventDATA valueForKey:@"name"]objectAtIndex:SelectEventIndex];
+    
+    // try to find an event
+    
+    EKEvent *event = [self findEventWithTitle:title inEventStore:store];
+    
+    // if found, use it
+    
+    if (event)
+    {
+        return event;
+    }
+    
+    // if not, let's create new event
+    
+    NSString *DateStr=[[FutureEventDATA valueForKey:@"date"]objectAtIndex:SelectEventIndex];
+    // Convert string to date object
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
+    NSDate *date = [dateFormat dateFromString:DateStr];
+    
+    
+    event = [EKEvent eventWithEventStore:store];
+    
+    event.title = title;
+    event.notes = [[FutureEventDATA valueForKey:@"details"]objectAtIndex:SelectEventIndex];
+    event.location = [[FutureEventDATA valueForKey:@"address"]objectAtIndex:SelectEventIndex];
+    event.calendar = [store defaultCalendarForNewEvents];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    components.hour = 4;
+    event.startDate =date;
+    components.hour = 1;
+    event.endDate = [calendar dateByAddingComponents:components
+                                              toDate:event.startDate
+                                             options:0];
+    
+    return event;
+}
+
+- (EKEvent *)findEventWithTitle:(NSString *)title inEventStore:(EKEventStore *)store
+{
+    // Get the appropriate calendar
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    // Create the start range date components
+    NSDateComponents *oneDayAgoComponents = [[NSDateComponents alloc] init];
+    oneDayAgoComponents.day = -1;
+    NSDate *oneDayAgo = [calendar dateByAddingComponents:oneDayAgoComponents
+                                                  toDate:[NSDate date]
+                                                 options:0];
+    
+    // Create the end range date components
+    NSDateComponents *oneWeekFromNowComponents = [[NSDateComponents alloc] init];
+    oneWeekFromNowComponents.day = 7;
+    NSDate *oneWeekFromNow = [calendar dateByAddingComponents:oneWeekFromNowComponents
+                                                       toDate:[NSDate date]
+                                                      options:0];
+    
+    // Create the predicate from the event store's instance method
+    NSPredicate *predicate = [store predicateForEventsWithStartDate:oneDayAgo
+                                                            endDate:oneWeekFromNow
+                                                          calendars:nil];
+    
+    // Fetch all events that match the predicate
+    NSArray *events = [store eventsMatchingPredicate:predicate];
+    
+    for (EKEvent *event in events)
+    {
+        if ([title isEqualToString:event.title])
+        {
+            return event;
+        }
+    }
+    
+    return nil;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

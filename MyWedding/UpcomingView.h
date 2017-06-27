@@ -12,6 +12,7 @@
 
 {
     NSMutableDictionary *FutureEventDATA;
+    NSInteger SelectEventIndex;
 }
 @property (weak, nonatomic) IBOutlet UILabel *NotificationLabel;
 

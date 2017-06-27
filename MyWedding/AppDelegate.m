@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 
-//#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
 @interface AppDelegate ()
 
 @end
@@ -19,8 +19,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //com.salemal.dawat 
-   //[self registerForRemoteNotification];
+    //com.salemal.dawat
+    //com.jkinfosoft.MyWedding
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber: 0];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+
+   [self registerForRemoteNotification];
     return YES;
 }
 #pragma mark - Class Methods
@@ -28,7 +33,7 @@
 /**
  Notification Registration
  */
-/*
+
 - (void)registerForRemoteNotification {
     if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@"10.0")) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -92,7 +97,7 @@
         
     }
 }
-*/
+
 + (AppDelegate *)sharedInstance
 {
     return (AppDelegate *)[UIApplication sharedApplication].delegate;

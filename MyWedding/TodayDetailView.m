@@ -1,78 +1,82 @@
 //
-//  ViewController.m
+//  TodayDetailView.m
 //  MyWedding
 //
-//  Created by kaushik on 01/04/17.
+//  Created by Mango SW on 27/06/2017.
 //  Copyright © 2017 kaushik. All rights reserved.
 //
 
-#import "TodayView.h"
-#import "UpcomingCell.h"
+#import "TodayDetailView.h"
 #import "MyWedding.pch"
 #import <EventKitUI/EventKitUI.h>
-#import "TodayDetailView.h"
 
-@interface TodayView ()<EKEventViewDelegate,EKEventEditViewDelegate>
+@interface TodayDetailView ()<EKEventViewDelegate,EKEventEditViewDelegate>
 
 @end
 
-@implementation TodayView
-@synthesize TodayTableView;
+@implementation TodayDetailView
+@synthesize EventID;
+@synthesize EventIMG,EventDate,EventName,Contact,Address,HostName;
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    [self.NotificationLabel setHidden:YES];
-   
+    
     BOOL internet=[AppDelegate connectedToNetwork];
     if (internet)
-        [self performSelector:@selector(getTodayEvent) withObject:nil afterDelay:0.0];
+        [self performSelector:@selector(TodayDetailEvent) withObject:nil afterDelay:0.0];
     else
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
     
-    
-    UINib *nib = [UINib nibWithNibName:@"UpcomingCell" bundle:nil];
-    UpcomingCell *cell = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
-    TodayTableView.rowHeight = cell.frame.size.height;
-    [TodayTableView registerNib:nib forCellReuseIdentifier:@"UpcomingCell"];
-    
+    // Do any additional setup after loading the view.
 }
--(void)getTodayEvent
+
+-(void)TodayDetailEvent
 {
+    NSString *newToken=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
+    
     NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [currentDefaults objectForKey:@"USERDATADICT"];
     NSDictionary* userData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     NSString *cutmrID=[userData valueForKey:@"id"];
     
-    NSString *newToken=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
     NSMutableDictionary *dictParams = [[NSMutableDictionary alloc] init];
     [dictParams setObject:newToken  forKey:@"X-API-KEY"];
     [dictParams setObject:@"application/json"  forKey:@"Content-Type"];
     [dictParams setObject:cutmrID  forKey:@"customer_id"];
-     [dictParams setObject:@"0"  forKey:@"list_type"];//This for Today Event only 0
-     [dictParams setObject:@"0"  forKey:@"page_id"];// this for 1 to 10 only
+    [dictParams setObject:@"0"  forKey:@"list_type"];//This for today Event only 0
+    [dictParams setObject:@"0"  forKey:@"page_id"];
+    [dictParams setObject:EventID  forKey:@"id"];
     
     [CommonWS AAwebserviceWithURL:[NSString stringWithFormat:@"%@",getEventsURL] withParam:dictParams withCompletion:^(NSDictionary *response, BOOL success1)
      {
-         [self handleTodayEventResponse:response];
+         [self handleFutureEventResponse:response];
      }];
 }
-- (void)handleTodayEventResponse:(NSDictionary*)response
+- (void)handleFutureEventResponse:(NSDictionary*)response
 {
     
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
-        TodayEventDATA=[response valueForKey:@"DATA"];
-        NSLog(@"TodayEventDATA==%@",TodayEventDATA);
-        if (TodayEventDATA.count>0)
+        TodayEventDetail=[response valueForKey:@"DATA"];
+        NSLog(@"TodayDetailEventDATA count==%@",TodayEventDetail);
+        HostName.text=[[TodayEventDetail valueForKey:@"host_name"]objectAtIndex:0];
+        EventName.text=[[TodayEventDetail valueForKey:@"name"]objectAtIndex:0];
+        Address.text=[[TodayEventDetail valueForKey:@"address"]objectAtIndex:0];
+        Contact.text=[[TodayEventDetail valueForKey:@"contact"]objectAtIndex:0];
+        EventDate.text=[[TodayEventDetail valueForKey:@"host_name"]objectAtIndex:0];
+        
+        NSArray *dic;
+        for (dic in [TodayEventDetail valueForKey:@"img"])
         {
-            [self.NotificationLabel setHidden:YES];
+            for (NSDictionary *dics in dic)
+            {
+                NSString *Urlstr=[dics valueForKey:@"url"];
+                [EventIMG sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
+                [EventIMG setShowActivityIndicatorView:YES];
+                // NSLog(@"dic=%@",dics);
+            }
         }
-        else
-        {
-             [self.NotificationLabel setHidden:NO];
-        }
-        [TodayTableView reloadData];
+        
     }
     else
     {
@@ -80,78 +84,12 @@
     }
     
 }
-#pragma mark UITableView delegate
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return TodayEventDATA.count;
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
-
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (IBAction)Calendar_Btn_Action:(id)sender
 {
-    return 1;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 25.0f;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *v = [UIView new];
-    [v setBackgroundColor:[UIColor clearColor]];
-    return v;
-}
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"UpcomingCell";
-    UpcomingCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell=nil;
-    if (cell == nil)
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    cell.hostName.text=[[TodayEventDATA valueForKey:@"host_name"]objectAtIndex:indexPath.section];
-    cell.EventName.text=[[TodayEventDATA valueForKey:@"name"]objectAtIndex:indexPath.section];
-    cell.address.text=[[TodayEventDATA valueForKey:@"address"]objectAtIndex:indexPath.section];
-    cell.DateLBL.text=[[TodayEventDATA valueForKey:@"date"]objectAtIndex:indexPath.section];
-    cell.timeLBL.text=[[TodayEventDATA valueForKey:@"contact"]objectAtIndex:indexPath.section];
-    
-    cell.EventImage.layer.backgroundColor=[[UIColor clearColor] CGColor];    
-    [cell.CalenderBTN addTarget:self action:@selector(CalenBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    cell.CalenderBTN.tag=indexPath.section;
-    
-    NSArray *dic;
-    for (dic in [TodayEventDATA valueForKey:@"img"])
-    {
-        for (NSDictionary *dics in dic)
-        {
-            NSString *Urlstr=[dics valueForKey:@"url"];
-            [cell.EventImage sd_setImageWithURL:[NSURL URLWithString:Urlstr] placeholderImage:[UIImage imageNamed:@"placeholder_img"]];
-            [cell.EventImage setShowActivityIndicatorView:YES];
-            NSLog(@"dic=%@",dics);
-        }
-    }
-    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-    return cell;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    TodayDetailView *vcr = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TodayDetailView"];
-    vcr.EventID=[NSString stringWithFormat:@"%@",[[TodayEventDATA valueForKey:@"id"]objectAtIndex:indexPath.section]];
-    [self.navigationController pushViewController:vcr animated:YES];
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    return 114;
-    
-}
--(void)CalenBtnClick:(id)sender
-{
-    UIButton *senderButton = (UIButton *)sender;
-    SelectEventIndex=senderButton.tag;
-    
     EKEventStore *store = [[EKEventStore alloc] init];
     
     if([store respondsToSelector:@selector(requestAccessToEntityType:completion:)])
@@ -172,8 +110,8 @@
         // iOS 5
         [self createEventAndPresentViewController:store];
     }
-    
 }
+
 - (void)eventEditViewController:(EKEventEditViewController *)controller didCompleteWithAction:(EKEventEditViewAction)action
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -194,9 +132,7 @@
 - (EKEvent *)findOrCreateEvent:(EKEventStore* )store
 {
     
-    
-    
-    NSString *title =  [[TodayEventDATA valueForKey:@"host_name"]objectAtIndex:SelectEventIndex];
+    NSString *title =  [[TodayEventDetail valueForKey:@"name"]objectAtIndex:0];
     
     // try to find an event
     
@@ -211,7 +147,7 @@
     
     // if not, let's create new event
     
-    NSString *DateStr=[[TodayEventDATA valueForKey:@"date"]objectAtIndex:SelectEventIndex];
+    NSString *DateStr=[[TodayEventDetail valueForKey:@"date"]objectAtIndex:0];
     // Convert string to date object
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
@@ -221,8 +157,8 @@
     event = [EKEvent eventWithEventStore:store];
     
     event.title = title;
-    event.notes = [[TodayEventDATA valueForKey:@"details"]objectAtIndex:SelectEventIndex];
-    event.location = [[TodayEventDATA valueForKey:@"address"]objectAtIndex:SelectEventIndex];
+    event.notes = [[TodayEventDetail valueForKey:@"details"]objectAtIndex:0];
+    event.location = [[TodayEventDetail valueForKey:@"address"]objectAtIndex:0];
     event.calendar = [store defaultCalendarForNewEvents];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -274,12 +210,18 @@
     
     return nil;
 }
-
-- (void)didReceiveMemoryWarning
+- (IBAction)BackBtn_Action:(id)sender
 {
-    [super didReceiveMemoryWarning];
+    [self.navigationController popViewControllerAnimated:YES];
 }
+/*
+#pragma mark - Navigation
 
-
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end
