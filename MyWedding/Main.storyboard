@@ -2506,7 +2506,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MainLogo" width="231" height="160"/>
+        <image name="MainLogo" width="256" height="256"/>
         <image name="PopupBTN" width="138" height="41"/>
         <image name="ServiceListCell" width="320" height="88"/>
         <image name="WhiteBackBtn" width="17" height="17"/>
