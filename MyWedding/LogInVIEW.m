@@ -253,7 +253,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [CountryCodeBTN setTitle:[[CountryCodeDATA valueForKey:@"code"] objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-    CountryCodeId=[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:indexPath.row];
+    CountryCodeId=[NSString stringWithFormat:@"%@",[[CountryCodeDATA valueForKey:@"id"] objectAtIndex:indexPath.row]];
    PopUpView.hidden=YES;
 }
 

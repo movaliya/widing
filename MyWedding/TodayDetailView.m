@@ -18,6 +18,12 @@
 @synthesize EventID;
 @synthesize EventIMG,EventDate,EventName,Contact,Address,HostName;
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+    //    return UIStatusBarStyleDefault;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

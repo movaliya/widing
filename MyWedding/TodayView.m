@@ -57,6 +57,7 @@
          [self handleTodayEventResponse:response];
      }];
 }
+
 - (void)handleTodayEventResponse:(NSDictionary*)response
 {
     
@@ -80,6 +81,7 @@
     }
     
 }
+
 #pragma mark UITableView delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

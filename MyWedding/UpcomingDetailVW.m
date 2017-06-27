@@ -19,6 +19,12 @@
 @synthesize EventIMG,EventDate,EventName,Contact,Address,HostName;
 
 
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+    //    return UIStatusBarStyleDefault;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -29,6 +35,7 @@
         [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
     // Do any additional setup after loading the view.
 }
+
 -(void)upComingEvent
 {
     NSString *newToken=[[NSUserDefaults standardUserDefaults]objectForKey:@"USERTOKEN"];
