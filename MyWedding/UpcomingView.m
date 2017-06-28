@@ -84,7 +84,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:@"" message:[response objectForKey:@"MSG"] delegate:nil];
     }
     
 }

@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *EventName;
 @property (weak, nonatomic) IBOutlet UILabel *EventDate;
 @property (weak, nonatomic) IBOutlet UILabel *Contact;
+@property (weak, nonatomic) IBOutlet UILabel *EventDetail;
 
 @property (strong, nonatomic) NSString *EventID;
 

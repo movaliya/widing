@@ -16,7 +16,7 @@
 
 @implementation TodayDetailView
 @synthesize EventID;
-@synthesize EventIMG,EventDate,EventName,Contact,Address,HostName;
+@synthesize EventIMG,EventDate,EventName,Contact,Address,HostName,EventDetail;
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -69,7 +69,8 @@
         EventName.text=[[TodayEventDetail valueForKey:@"name"]objectAtIndex:0];
         Address.text=[[TodayEventDetail valueForKey:@"address"]objectAtIndex:0];
         Contact.text=[[TodayEventDetail valueForKey:@"contact"]objectAtIndex:0];
-        EventDate.text=[[TodayEventDetail valueForKey:@"host_name"]objectAtIndex:0];
+        EventDate.text=[[TodayEventDetail valueForKey:@"date"]objectAtIndex:0];
+        EventDetail.text=[[TodayEventDetail valueForKey:@"details"]objectAtIndex:0];
         
         NSArray *dic;
         for (dic in [TodayEventDetail valueForKey:@"img"])
@@ -215,6 +216,48 @@
     }
     
     return nil;
+}
+- (IBAction)CallBtn_Action:(id)sender
+{
+    NSString *phoneNumber = Contact.text;
+    NSURL *phoneUrl = [NSURL URLWithString:[@"telprompt://" stringByAppendingString:phoneNumber]];
+    NSURL *phoneFallbackUrl = [NSURL URLWithString:[@"tel://" stringByAppendingString:phoneNumber]];
+    
+    if ([UIApplication.sharedApplication canOpenURL:phoneUrl]) {
+        [UIApplication.sharedApplication openURL:phoneUrl];
+    } else if ([UIApplication.sharedApplication canOpenURL:phoneFallbackUrl]) {
+        [UIApplication.sharedApplication openURL:phoneFallbackUrl];
+    } else {
+        
+         [AppDelegate showErrorMessageWithTitle:@"ERROR" message:@"Your device can not do phone calls" delegate:nil];
+        // Show an error message: Your device can not do phone calls.
+    }
+   
+}
+- (IBAction)LocationBtn_Action:(id)sender
+{
+    NSString *address=Address.text;
+    address = [address stringByReplacingOccurrencesOfString:@" "
+                                         withString:@"+"];
+    
+    NSString *destinationLatitude=[[TodayEventDetail valueForKey:@"latitude"]objectAtIndex:0];
+     NSString *destinationLongitude=[[TodayEventDetail valueForKey:@"longitude"]objectAtIndex:0];
+    
+   // http://maps.google.com/maps?q=This+is+near+Lake+Shore+Drive@
+    
+    NSString *string = [NSString stringWithFormat:@"http://maps.google.com/maps?q=%@@%@,%@",address,destinationLatitude,destinationLongitude];
+    //NSString *string =@"https://www.google.com/maps/place/Pakwan+Restaurant/@37.5317087,-121.9606598";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
+    
+    
+    /*
+    if ([[UIApplication sharedApplication] canOpenURL: [NSURL URLWithString:@"comgooglemaps:"]]) {
+        NSString *urlString = [NSString stringWithFormat:@"comgooglemaps://?ll=%@,%@",destinationLatitude,destinationLongitude];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+    } else {
+        NSString *string = [NSString stringWithFormat:@"http://maps.google.com/maps?ll=%@,%@",destinationLatitude,destinationLongitude];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:string]];
+    }*/
 }
 - (IBAction)BackBtn_Action:(id)sender
 {

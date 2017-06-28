@@ -57,6 +57,7 @@
 		530BD1311E93C95000DEC9DE /* Settingrectangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 530BD1301E93C95000DEC9DE /* Settingrectangle.png */; };
 		53262A0C1F02935400E66A09 /* UpcomingDetailVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 53262A0B1F02935400E66A09 /* UpcomingDetailVW.m */; };
 		534EF7F71EA9CC0C00500611 /* VerificationCodeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 534EF7F61EA9CC0C00500611 /* VerificationCodeScreen.m */; };
+		534F7C331F03E68E00293FB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 534F7C321F03E68E00293FB8 /* MapKit.framework */; };
 		536A21C61EBC9D5200556E33 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = 536A21C51EBC9D5200556E33 /* Splash.png */; };
 		536D8C261F02A31D002D6004 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53672F901EAB289800B38159 /* Main.storyboard */; };
 		536D8C291F02A3BB002D6004 /* TodayDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 536D8C281F02A3BB002D6004 /* TodayDetailView.m */; };
@@ -194,6 +195,7 @@
 		53262A0B1F02935400E66A09 /* UpcomingDetailVW.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingDetailVW.m; sourceTree = "<group>"; };
 		534EF7F51EA9CC0C00500611 /* VerificationCodeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeScreen.h; sourceTree = "<group>"; };
 		534EF7F61EA9CC0C00500611 /* VerificationCodeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeScreen.m; sourceTree = "<group>"; };
+		534F7C321F03E68E00293FB8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		53672F901EAB289800B38159 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		536A21C51EBC9D5200556E33 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 		536D8C271F02A3BB002D6004 /* TodayDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TodayDetailView.h; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				534F7C331F03E68E00293FB8 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +486,21 @@
 			name = Today;
 			sourceTree = "<group>";
 		};
+		534F7C2D1F03E5FF00293FB8 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
+		534F7C311F03E68D00293FB8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				534F7C321F03E68E00293FB8 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B13F2AD51E92A41D00F5EBB1 /* FreeButtonsDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +526,7 @@
 				B13F2AD81E92A41D00F5EBB1 /* MBXPageViewController */,
 				B16A22821E8F753D00F0E3B3 /* MyWedding */,
 				B16A22811E8F753D00F0E3B3 /* Products */,
+				534F7C311F03E68D00293FB8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -527,6 +546,7 @@
 				530BD0FD1E935E2500DEC9DE /* Cell */,
 				530AA6411EA8DBB1005B527A /* Comman Class */,
 				530AA6381EA89BF2005B527A /* LoginReg */,
+				534F7C2D1F03E5FF00293FB8 /* MapView */,
 				B16A22861E8F753D00F0E3B3 /* AppDelegate.h */,
 				B16A22871E8F753D00F0E3B3 /* AppDelegate.m */,
 				B16A22891E8F753D00F0E3B3 /* TodayView.h */,
