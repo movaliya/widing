@@ -31,7 +31,7 @@
     [ServiceDetialTABLE registerNib:nib forCellReuseIdentifier:@"ServiceDetailCELL"];
     
     ServiceDetialTABLE.rowHeight = UITableViewAutomaticDimension;
-    ServiceDetialTABLE.estimatedRowHeight = 255.0;
+    ServiceDetialTABLE.estimatedRowHeight = 390.0;
 }
 
 #pragma mark UITableView delegate
