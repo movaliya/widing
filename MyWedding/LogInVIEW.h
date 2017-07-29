@@ -19,5 +19,6 @@
 - (IBAction)CountryBTN_Click:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIView *PopUpView;
+@property (weak, nonatomic) IBOutlet UILabel *dontHave_LBL;
 @property (strong, nonatomic) IBOutlet UITableView *popupTBL;
 @end

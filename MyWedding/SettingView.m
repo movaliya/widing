@@ -60,7 +60,7 @@
             if (internet)
                 [self LogoutService];
             else
-                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+                [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
         }
     }
 }
@@ -96,7 +96,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
 }
 - (IBAction)Back_Btn_Action:(id)sender
@@ -114,21 +114,21 @@
     
     if ([OldPass_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Old Password" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Old Password" delegate:nil];
     }
     else if ([NewPass_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter New Password" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter New Password" delegate:nil];
     }
     else if ([ConfirmPass_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Confirm Password" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Confirm Password" delegate:nil];
     }
     else
     {
         if (![NewPass_TXT.text isEqualToString:ConfirmPass_TXT.text])
         {
-             [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"New password and Confirm password is not same" delegate:nil];
+             [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"New password and Confirm password is not same" delegate:nil];
         }
         else
         {
@@ -136,7 +136,7 @@
             if (internet)
                  [self ResetPasswrdMethod];
             else
-                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+                [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
            
         }
     }
@@ -179,7 +179,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
 }
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

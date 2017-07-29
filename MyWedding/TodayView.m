@@ -28,7 +28,7 @@
     if (internet)
         [self performSelector:@selector(getTodayEvent) withObject:nil afterDelay:0.0];
     else
-        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
     
     
     UINib *nib = [UINib nibWithNibName:@"UpcomingCell" bundle:nil];

@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  MyWedding
+
+  Created by Mango SW on 29/07/2017.
+  Copyright © 2017 kaushik. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "DAWATE";
+
+"Don't have an account? Sign up" = "Don't have an account? Sign up";
+
+"Please check your internet" ="Please check your internet connection or try again later.";
+"Error" = "Error!";

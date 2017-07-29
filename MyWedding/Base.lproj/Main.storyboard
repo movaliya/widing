@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UVn-os-2Hc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UVn-os-2Hc">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -609,6 +609,7 @@
                         <outlet property="MobileTXT" destination="1tg-bc-ta5" id="E6t-iY-Hap"/>
                         <outlet property="PasswordTXT" destination="9fZ-U5-PpI" id="v2Y-DJ-OFz"/>
                         <outlet property="PopUpView" destination="i8R-JP-KpF" id="bld-p7-pyl"/>
+                        <outlet property="dontHave_LBL" destination="Nvd-Su-sEV" id="DfC-AK-Fln"/>
                         <outlet property="popupTBL" destination="gdD-J7-BEW" id="oT7-lf-LBF"/>
                     </connections>
                 </viewController>

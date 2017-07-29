@@ -17,11 +17,15 @@
 
 @implementation LogInVIEW
 @synthesize MobileTXT,PasswordTXT;
-@synthesize popupTBL,PopUpView,CountryCodeBTN;
+@synthesize popupTBL,PopUpView,CountryCodeBTN,dontHave_LBL;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    dontHave_LBL.text = NSLocalizedString(@"Don't have an account? Sign up", @"");
+    
+    
     BOOL internet=[AppDelegate connectedToNetwork];
     if (internet)
     {
@@ -42,7 +46,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
     }
     
 
@@ -55,21 +59,21 @@
     
     if ([MobileTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Mobile Number" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Mobile Number" delegate:nil];
     }
    else if (CountryCodeBTN.titleLabel.text.length == 0)
    {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Country Code." delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please Select Country Code." delegate:nil];
     }
    else if (CountryCodeId.length == 0)
    {
-       [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Server down please try after some time." delegate:nil];
+       [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Server down please try after some time." delegate:nil];
    }
     else
     {
             if ([PasswordTXT.text isEqualToString:@""])
             {
-                [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter password" delegate:nil];
+                [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter password" delegate:nil];
             }
             else
             {
@@ -77,7 +81,7 @@
                 if (internet)
                     [self CallForloging];
                 else
-                    [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+                    [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
             }
         }
 }
@@ -118,7 +122,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
     
 }
@@ -147,7 +151,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
     
 }
@@ -191,7 +195,10 @@
         //***************************Local Device country Code Take******************
         NSLocale *countryLocale = [NSLocale currentLocale];
         NSString *countryCode = [countryLocale objectForKey:NSLocaleCountryCode];
-        NSString *country = [countryLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
+       // NSString *country = [countryLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
+        NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+        NSString *country = [usLocale displayNameForKey: NSLocaleCountryCode value: countryCode];
+        
         //****************************************************************************
         CountryCodeDATA=[response valueForKey:@"DATA"];
         
@@ -208,7 +215,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
     
 }

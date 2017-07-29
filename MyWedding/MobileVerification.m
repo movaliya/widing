@@ -29,7 +29,7 @@
     if (internet)
          [self performSelector:@selector(getCoutryCode) withObject:nil afterDelay:0.0];
     else
-        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
    
     // Do any additional setup after loading the view.
 }
@@ -56,7 +56,9 @@
         //***************************Local Device country Code Take******************
         NSLocale *countryLocale = [NSLocale currentLocale];
         NSString *countryCode = [countryLocale objectForKey:NSLocaleCountryCode];
-        NSString *country = [countryLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
+        NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+
+        NSString *country = [usLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
         //****************************************************************************
         CountryCodeDATA=[response valueForKey:@"DATA"];
         
@@ -73,7 +75,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
     
 }
@@ -86,11 +88,11 @@
     {
         //[self ShowPOPUP];
         
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Mobile Number" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Mobile Number" delegate:nil];
     }
     else if (Country_BTN.titleLabel.text.length == 0)
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please Select Country Code." delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please Select Country Code." delegate:nil];
     }
     else
     {
@@ -99,7 +101,7 @@
         if (internet)
             [self mobieVerfifiedFoResigter];
         else
-            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+            [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
     }
 }
 
@@ -130,7 +132,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
 }
 
@@ -142,7 +144,7 @@
     {
         //[self ShowPOPUP];
         
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter verification mobile number code" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter verification mobile number code" delegate:nil];
     }
     else
     {
@@ -150,7 +152,7 @@
         if (internet)
             [self VerifiedCode:customerId];
         else
-            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+            [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
     }
     
 }
@@ -183,7 +185,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
 }
 

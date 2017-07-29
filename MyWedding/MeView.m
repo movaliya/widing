@@ -56,32 +56,32 @@
    
     if ([FirstName_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter First Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter First Name" delegate:nil];
     }
     else if ([SecondName_TXT.text isEqualToString:@""])
     {
         
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Second Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Second Name" delegate:nil];
     }
     else if ([MiddleName_TXT.text isEqualToString:@""])
     {
         
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Middle Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Middle Name" delegate:nil];
     }
     else if ([LastName_TXT.text isEqualToString:@""])
     {
         
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Last Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Last Name" delegate:nil];
     }
     else if ([Email_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Email" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Email" delegate:nil];
     }
     else
     {
         if (![AppDelegate IsValidEmail:Email_TXT.text])
         {
-            [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter valid email" delegate:nil];
+            [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter valid email" delegate:nil];
         }
         else
         {
@@ -91,7 +91,7 @@
                 [self profileUpdate];
             }
             else
-                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+                [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
         }
     }
 }
@@ -143,7 +143,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
 }
 - (void)didReceiveMemoryWarning {

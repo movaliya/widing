@@ -31,7 +31,7 @@
     if (internet)
         [self performSelector:@selector(TodayDetailEvent) withObject:nil afterDelay:0.0];
     else
-        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
     
     // Do any additional setup after loading the view.
 }
@@ -87,7 +87,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
     
 }
@@ -229,7 +229,7 @@
         [UIApplication.sharedApplication openURL:phoneFallbackUrl];
     } else {
         
-         [AppDelegate showErrorMessageWithTitle:@"ERROR" message:@"Your device can not do phone calls" delegate:nil];
+         [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Your device can not do phone calls" delegate:nil];
         // Show an error message: Your device can not do phone calls.
     }
    

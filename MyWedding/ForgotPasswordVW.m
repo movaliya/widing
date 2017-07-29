@@ -31,7 +31,7 @@
     if (internet)
         [self performSelector:@selector(getCoutryCode) withObject:nil afterDelay:0.0];
     else
-        [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
     
 }
 
@@ -56,7 +56,9 @@
         //***************************Local Device country Code Take******************
         NSLocale *countryLocale = [NSLocale currentLocale];
         NSString *countryCode = [countryLocale objectForKey:NSLocaleCountryCode];
-        NSString *country = [countryLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
+        NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+
+        NSString *country = [usLocale displayNameForKey:NSLocaleCountryCode value:countryCode];
         //****************************************************************************
         CountryCodeDATA=[response valueForKey:@"DATA"];
         
@@ -93,7 +95,7 @@
         if (internet)
             [self CallForgotPass];
         else
-            [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+            [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
     }
 }
 
@@ -160,7 +162,7 @@
             if (internet)
                 [self ResetPasswrdMethod];
             else
-                [AppDelegate showErrorMessageWithTitle:@"" message:@"Please check your internet connection or try again later." delegate:nil];
+                [AppDelegate showErrorMessageWithTitle:@"" message:NSLocalizedString(@"Please check your internet", @"") delegate:nil];
         }
     }
     
