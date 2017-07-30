@@ -58,6 +58,7 @@
 		53262A0C1F02935400E66A09 /* UpcomingDetailVW.m in Sources */ = {isa = PBXBuildFile; fileRef = 53262A0B1F02935400E66A09 /* UpcomingDetailVW.m */; };
 		5331565D1F2C713100D0D779 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5331565F1F2C713100D0D779 /* Main.storyboard */; };
 		5331566A1F2CC89F00D0D779 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5331566C1F2CC89F00D0D779 /* Localizable.strings */; };
+		53324EE21F2E0BD20074A935 /* Info.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53324EE41F2E0BD20074A935 /* Info.strings */; };
 		534EF7F71EA9CC0C00500611 /* VerificationCodeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 534EF7F61EA9CC0C00500611 /* VerificationCodeScreen.m */; };
 		534F7C331F03E68E00293FB8 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 534F7C321F03E68E00293FB8 /* MapKit.framework */; };
 		53673A3F1F2CE38100316D3F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53673A3E1F2CE38100316D3F /* Info.plist */; };
@@ -202,6 +203,8 @@
 		533156651F2C715B00D0D779 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5331566B1F2CC89F00D0D779 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5331566D1F2CC8A200D0D779 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
+		53324EE31F2E0BD20074A935 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Info.strings; sourceTree = "<group>"; };
+		53324EE51F2E0BD40074A935 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Info.strings; sourceTree = "<group>"; };
 		534EF7F51EA9CC0C00500611 /* VerificationCodeScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeScreen.h; sourceTree = "<group>"; };
 		534EF7F61EA9CC0C00500611 /* VerificationCodeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeScreen.m; sourceTree = "<group>"; };
 		534F7C321F03E68E00293FB8 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -574,6 +577,7 @@
 				5331565F1F2C713100D0D779 /* Main.storyboard */,
 				530BD11E1E937D7A00DEC9DE /* Images */,
 				B16A228F1E8F753E00F0E3B3 /* Assets.xcassets */,
+				53324EE41F2E0BD20074A935 /* Info.strings */,
 				53673A3E1F2CE38100316D3F /* Info.plist */,
 				B16A22911E8F753E00F0E3B3 /* LaunchScreen.storyboard */,
 				B16A22831E8F753D00F0E3B3 /* Supporting Files */,
@@ -908,6 +912,7 @@
 				5309BE6A1EFC0CA3001D4EDD /* Icon-App-60x60@1x.png in Resources */,
 				5309BE691EFC0CA3001D4EDD /* Icon-App-57x57@2x.png in Resources */,
 				B16A22901E8F753E00F0E3B3 /* Assets.xcassets in Resources */,
+				53324EE21F2E0BD20074A935 /* Info.strings in Resources */,
 				B16A23F01E8F75C200F0E3B3 /* IQKeyboardManager.bundle in Resources */,
 				5331566A1F2CC89F00D0D779 /* Localizable.strings in Resources */,
 				5309BE601EFC0CA3001D4EDD /* Icon-App-20x20@2x.png in Resources */,
@@ -1029,6 +1034,15 @@
 				5331566D1F2CC8A200D0D779 /* ar */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		53324EE41F2E0BD20074A935 /* Info.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53324EE31F2E0BD20074A935 /* en */,
+				53324EE51F2E0BD40074A935 /* ar */,
+			);
+			name = Info.strings;
 			sourceTree = "<group>";
 		};
 		B16A22911E8F753E00F0E3B3 /* LaunchScreen.storyboard */ = {

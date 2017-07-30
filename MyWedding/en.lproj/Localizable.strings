@@ -7,6 +7,7 @@
 */
 
 "CFBundleDisplayName" = "DAWATE";
+"CFBundleName" = "DAWATE";
 
 "Don't have an account? Sign up" = "Don't have an account? Sign up";
 
@@ -15,6 +16,9 @@
 "Success"="Success";
 "Cancel"="Cancel";
 "Logout"="Logout";
+"Logout"="Logout";
+"OK"="OK";
+
 "Are you sure want to Logout"="Are you sure want to Logout?";
 "Please enter Mobile Number" ="Please enter Mobile Number";
 "Please Select Country Code" ="Please Select Country Code.";

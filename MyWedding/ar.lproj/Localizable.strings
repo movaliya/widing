@@ -7,6 +7,8 @@
 */
 
 "CFBundleDisplayName" = "دعواتي";
+"CFBundleName" = "دعواتي";
+
 "Don't have an account? Sign up" = "لايوجد حساب مسجل";
 
 "Please check your internet" ="لايوجد شبكة";
@@ -14,6 +16,8 @@
 "Success"="نجاح";
 "Cancel"="إلغاء";
 "Logout"="الخروج";
+"OK"="حسنا";
+
 
 
 "Are you sure want to Logout"="هل تريد بالتأكيد الخروج؟";
