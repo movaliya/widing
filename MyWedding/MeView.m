@@ -56,32 +56,32 @@
    
     if ([FirstName_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter First Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter First Name",@"") delegate:nil];
     }
     else if ([SecondName_TXT.text isEqualToString:@""])
     {
         
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Second Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Second Name",@"") delegate:nil];
     }
     else if ([MiddleName_TXT.text isEqualToString:@""])
     {
         
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Middle Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Middle Name",@"") delegate:nil];
     }
     else if ([LastName_TXT.text isEqualToString:@""])
     {
         
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Last Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Last Name",@"") delegate:nil];
     }
     else if ([Email_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Email" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Email",@"") delegate:nil];
     }
     else
     {
         if (![AppDelegate IsValidEmail:Email_TXT.text])
         {
-            [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter valid email" delegate:nil];
+            [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter valid email",@"") delegate:nil];
         }
         else
         {
@@ -139,7 +139,7 @@
         NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userdata];
         [currentDefaults setObject:data forKey:@"USERDATADICT"];
-        [AppDelegate showErrorMessageWithTitle:@"Success" message:@"You've successfully Update!!" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Success",@"") message:NSLocalizedString(@"You've successfully Update",@"") delegate:nil];
     }
     else
     {

@@ -144,7 +144,7 @@
 "bhW-JU-k0R.normalTitle" = "تسجيل";
 
 /* Class = "UITextField"; placeholder = "Area"; ObjectID = "cj6-j9-8Uu"; */
-"cj6-j9-8Uu.placeholder" = "Area";
+"cj6-j9-8Uu.placeholder" = "منطقة";
 
 /* Class = "UILabel"; text = "DAWAT"; ObjectID = "d9s-Pj-l10"; */
 "d9s-Pj-l10.text" = "دعواتي";
@@ -153,7 +153,7 @@
 "doK-Rb-llK.normalTitle" = "حسابي";
 
 /* Class = "UILabel"; text = "Kataria Automobiles Rd, Makarba, Ahmedabad, Gujarat 380051, India"; ObjectID = "eLv-ew-DSx"; */
-"eLv-ew-DSx.text" = "Kataria Automobiles Rd, Makarba, Ahmedabad, Gujarat 380051, India";
+"eLv-ew-DSx.text" = "كاتاريا أوتوموبيلز أردي، ماكاربا، أهمدباد، غوجارات 380051، الهند";
 
 /* Class = "UILabel"; text = "Enter your register mobile number"; ObjectID = "epY-L6-rNj"; */
 "epY-L6-rNj.text" = "أدخل رقم هاتفك المحمول";
@@ -213,7 +213,7 @@
 "syn-ci-uVK.normalTitle" = "+91";
 
 /* Class = "UILabel"; text = "Abdul Rehman"; ObjectID = "tIs-xn-r5t"; */
-"tIs-xn-r5t.text" = "Abdul Rehman";
+"tIs-xn-r5t.text" = "عبد الرحمن";
 
 /* Class = "UITextField"; placeholder = "Email"; ObjectID = "tgx-i9-JqY"; */
 "tgx-i9-JqY.placeholder" = "البريد الإلكتروني";
@@ -225,7 +225,7 @@
 "v3B-kd-XFY.placeholder" = "كلمة السر الجديدة";
 
 /* Class = "UILabel"; text = "Abdul Rehman"; ObjectID = "wMb-kF-TAK"; */
-"wMb-kF-TAK.text" = "Abdul Rehman";
+"wMb-kF-TAK.text" = "عبد الرحمن";
 
 /* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "wVS-wM-BQ7"; */
 "wVS-wM-BQ7.normalTitle" = "تسجيل خروج";
@@ -243,7 +243,7 @@
 "yuS-oy-IDq.text" = "دعواتي";
 
 /* Class = "UILabel"; text = "Kataria Automobiles Rd, Makarba, Ahmedabad, Gujarat 380051, India"; ObjectID = "yvO-8a-GPZ"; */
-"yvO-8a-GPZ.text" = "Kataria Automobiles Rd, Makarba, Ahmedabad, Gujarat 380051, India";
+"yvO-8a-GPZ.text" = "كاتاريا أوتوموبيلز أردي، ماكاربا، أهمدباد، غوجارات 380051، الهند";
 
 /* Class = "UIButton"; normalTitle = "SUBMIT"; ObjectID = "zV4-Gt-Box"; */
 "zV4-Gt-Box.normalTitle" = "عرض";

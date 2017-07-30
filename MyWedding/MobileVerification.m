@@ -88,11 +88,11 @@
     {
         //[self ShowPOPUP];
         
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Mobile Number" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Mobile Number",@"") delegate:nil];
     }
     else if (Country_BTN.titleLabel.text.length == 0)
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please Select Country Code." delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please Select Country Code",@"") delegate:nil];
     }
     else
     {
@@ -144,7 +144,7 @@
     {
         //[self ShowPOPUP];
         
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter verification mobile number code" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter verification mobile number code",@"") delegate:nil];
     }
     else
     {

@@ -72,62 +72,61 @@
     
     if ([FirstNameTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter First Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter First Name",@"") delegate:nil];
     }
     else if ([SecondNameTXT.text isEqualToString:@""])
     {
         
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Second Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Second Name",@"") delegate:nil];
     }
     else if ([MiddleNameTXT.text isEqualToString:@""])
     {
-        
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Middle Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Middle Name",@"") delegate:nil];
     }
     else if ([LastNameTXT.text isEqualToString:@""])
     {
         
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Last Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Last Name",@"") delegate:nil];
     }
     else if ([PasswordTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter password" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter password",@"") delegate:nil];
     }
     else if ([EmailTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Email" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Email",@"") delegate:nil];
     }
     else if ([VillNoTXT.text isEqualToString:@""])
     {
         
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Vill NO" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Vill NO",@"") delegate:nil];
     }
     else if ([AreaTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Area" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Area",@"") delegate:nil];
     }
     else if ([StreetNameTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Street Name" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Street Name",@"") delegate:nil];
     }
     else if ([DateOfYearTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Year of Birth" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Year of Birth",@"") delegate:nil];
     }
     else if ([ZoneTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Zone" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Zone",@"") delegate:nil];
     }
     
     else
     {
         if (![AppDelegate IsValidEmail:EmailTXT.text])
         {
-            [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter valid email" delegate:nil];
+            [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter valid email",@"") delegate:nil];
         }
         else if (![PasswordTXT.text isEqualToString:ConfrimPasswordTXT.text])
         {
-            [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Password does not match the confirm password." delegate:nil];
+            [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Password does not match the confirm password",@"") delegate:nil];
         }
         else
         {

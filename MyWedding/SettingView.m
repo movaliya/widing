@@ -42,10 +42,10 @@
 - (IBAction)SignOut_Action:(id)sender
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
-                                                    message:@"Are you sure want to Logout?"
+                                                    message:NSLocalizedString(@"Are you sure want to Logout",@"")
                                                    delegate:self
-                                          cancelButtonTitle:@"Cancel"
-                                          otherButtonTitles:@"Logout",nil];
+                                          cancelButtonTitle:NSLocalizedString(@"Cancel",@"")
+                                          otherButtonTitles:NSLocalizedString(@"Logout",@""),nil];
     alert.tag=50;
     [alert show];
 }
@@ -92,7 +92,7 @@
         [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"USERDATADICT"];
         [[NSUserDefaults standardUserDefaults]removeObjectForKey:@"USERTOKEN"];
         [self.navigationController popToRootViewControllerAnimated:NO];
-       [AppDelegate showErrorMessageWithTitle:@"Success" message:[response objectForKey:@"MSG"] delegate:nil];
+       [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Success",@"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
     else
     {
@@ -114,21 +114,21 @@
     
     if ([OldPass_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Old Password" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Old Password",@"") delegate:nil];
     }
     else if ([NewPass_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter New Password" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter New Password",@"") delegate:nil];
     }
     else if ([ConfirmPass_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Confirm Password" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Confirm Password",@"") delegate:nil];
     }
     else
     {
         if (![NewPass_TXT.text isEqualToString:ConfirmPass_TXT.text])
         {
-             [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"New password and Confirm password is not same" delegate:nil];
+             [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"New password and Confirm password is not same",@"") delegate:nil];
         }
         else
         {
@@ -175,7 +175,7 @@
         NewPass_TXT.text=@"";
         ConfirmPass_TXT.text=@"";
         ChangePasswordView.hidden=YES;
-         [AppDelegate showErrorMessageWithTitle:@"Success" message:[response objectForKey:@"MSG"] delegate:nil];
+         [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Success",@"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
     else
     {

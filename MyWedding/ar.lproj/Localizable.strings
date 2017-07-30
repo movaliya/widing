@@ -11,3 +11,45 @@
 
 "Please check your internet" ="لايوجد شبكة";
 "Error" ="خطأ";
+"Success"="نجاح";
+"Cancel"="إلغاء";
+"Logout"="الخروج";
+
+
+"Are you sure want to Logout"="هل تريد بالتأكيد الخروج؟";
+
+"Please enter Mobile Number" ="الرجاء إدخال رقم الجوال";
+"Please Select Country Code"="الرجاء تحديد رمز البلد";
+"Server down please try after some time"="عفواً، خطأ في تغطيةالشبكة";
+"Please enter password"="الرجاء إدخال كلمة المرور";
+"Please enter verification mobile number code"="الرجاء إدخال رمز التحقق من رقم الجوال";
+"Please enter First Name"="الرجاء إدخال الاسم الأول";
+"Please enter Second Name"="الرجاء إدخال الاسم الثاني";
+"Please enter Middle Name"="الرجاء إدخال الاسم الأوسط";
+"Please enter Last Name"="الرجاء إدخال الاسم الأخير";
+"Please enter Email"="الرجاء إدخال البريد الإلكتروني";
+"Please enter Vill NO"="يرجى إدخال فيل نو";
+"Please enter Area"="الرجاء إدخال المنطقة";
+"Please enter Street Name"="الرجاء إدخال اسم الشارع";
+"Please enter Year of Birth"="الرجاء إدخال سنة الميلاد";
+"Please enter Zone"="الرجاء إدخال المنطقة";
+"Please enter valid email"="الرجاء إدخال بريد إلكتروني صحيح";
+"Password does not match the confirm password"="كلمة المرور لا تتطابق مع كلمة مرور التأكيد";
+"Please enter Confirm password" = "الرجاء إدخال تأكيد كلمة المرور";
+"Your device can not do phone calls" = "يتعذر على جهازك إجراء مكالمات هاتفية";
+"You've successfully Update" = "لقد نجحت في التحديث";
+"Please enter Old Password" = "الرجاء إدخال كلمة المرور القديمة";
+"Please enter New Password" = "الرجاء إدخال كلمة مرور جديدة";
+"New password and Confirm password is not same" = "كلمة المرور الجديدة وتأكيد كلمة المرور ليست هي نفسها";
+
+
+
+
+
+
+
+
+
+
+
+

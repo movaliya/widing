@@ -59,21 +59,21 @@
     
     if ([MobileTXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter Mobile Number" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter Mobile Number", @"") delegate:nil];
     }
    else if (CountryCodeBTN.titleLabel.text.length == 0)
    {
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please Select Country Code." delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please Select Country Code", @"") delegate:nil];
     }
    else if (CountryCodeId.length == 0)
    {
-       [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Server down please try after some time." delegate:nil];
+       [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Server down please try after some time", @"") delegate:nil];
    }
     else
     {
             if ([PasswordTXT.text isEqualToString:@""])
             {
-                [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Please enter password" delegate:nil];
+                [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Please enter password",@"") delegate:nil];
             }
             else
             {

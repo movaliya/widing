@@ -230,7 +230,7 @@
         [UIApplication.sharedApplication openURL:phoneFallbackUrl];
     } else {
         
-        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:@"Your device can not do phone calls" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error", @"") message:NSLocalizedString(@"Your device can not do phone calls",@"") delegate:nil];
         // Show an error message: Your device can not do phone calls.
     }
     

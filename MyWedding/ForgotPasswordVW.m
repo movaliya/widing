@@ -75,7 +75,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error",@"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
     
 }
@@ -87,7 +87,7 @@
     
     if ([MobileNumber_TXT.text isEqualToString:@""])
     {        
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Mobile Number" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error",@"") message:NSLocalizedString(@"Please enter Mobile Number",@"") delegate:nil];
     }
     else
     {
@@ -126,7 +126,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error",@"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
 }
 
@@ -140,21 +140,21 @@
     
     if ([self.Cod_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter verification mobile number code" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error",@"") message:NSLocalizedString(@"Please enter verification mobile number code",@"") delegate:nil];
     }
     else if ([self.NewPasswrd_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Password" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error",@"") message:NSLocalizedString(@"Please enter Password",@"") delegate:nil];
     }
     else if ([self.confirmPasswrd_TXT.text isEqualToString:@""])
     {
-        [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Please enter Confirm password" delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error",@"") message:NSLocalizedString(@"Please enter Confirm password",@"") delegate:nil];
     }
     else
     {
         if (![self.NewPasswrd_TXT.text isEqualToString:self.confirmPasswrd_TXT.text])
         {
-            [AppDelegate showErrorMessageWithTitle:@"Error!" message:@"Password does not match the confirm password." delegate:nil];
+            [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error",@"") message:NSLocalizedString(@"Password does not match the confirm password",@"") delegate:nil];
         }
         else
         {
@@ -200,7 +200,7 @@
     }
     else
     {
-        [AppDelegate showErrorMessageWithTitle:@"ERROR" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Error",@"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
 }
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {

@@ -12,3 +12,33 @@
 
 "Please check your internet" ="Please check your internet connection or try again later.";
 "Error" = "Error!";
+"Success"="Success";
+"Cancel"="Cancel";
+"Logout"="Logout";
+"Are you sure want to Logout"="Are you sure want to Logout?";
+"Please enter Mobile Number" ="Please enter Mobile Number";
+"Please Select Country Code" ="Please Select Country Code.";
+"Server down please try after some time"="Server down please try after some time.";
+"Please enter password"="Please enter password.";
+"Please enter verification mobile number code"="Please enter verification mobile number code";
+"Please enter First Name"="Please enter First Name";
+"Please enter Second Name"="Please enter Second Name";
+"Please enter Middle Name"="Please enter Middle Name";
+"Please enter Last Name"="Please enter Last Name";
+"Please enter Email"="Please enter Email";
+"Please enter Vill NO"="Please enter Vill NO";
+"Please enter Area"="Please enter Area";
+"Please enter Street Name"="Please enter Street Name";
+"Please enter Year of Birth"="Please enter Year of Birth";
+"Please enter Zone"="Please enter Zone";
+"Please enter valid email"="Please enter valid email";
+"Password does not match the confirm password"="Password does not match the confirm password.";
+"Please enter Confirm password" ="Please enter Confirm password";
+"Your device can not do phone calls"="Your device can not do phone calls";
+"You've successfully Update"="You've successfully Update!!";
+"Please enter Old Password"="Please enter Old Password";
+"Please enter New Password"="Please enter New Password";
+"New password and Confirm password is not same"="New password and Confirm password is not same";
+
+
+
