@@ -183,10 +183,10 @@
     NSLog(@"Respose==%@",response);
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success",@"")
                                                         message:[response objectForKey:@"MSG"]
                                                        delegate:self
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:NSLocalizedString(@"OK",@"")
                                               otherButtonTitles:nil];
         [alert show];
     }

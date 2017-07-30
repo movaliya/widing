@@ -120,7 +120,7 @@
     
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
-         [AppDelegate showErrorMessageWithTitle:@"Success" message:[response objectForKey:@"MSG"] delegate:nil];
+         [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Success",@"") message:[response objectForKey:@"MSG"] delegate:nil];
         UserIDStr=[NSString stringWithFormat:@"%@",[[response valueForKey:@"DATA"] valueForKey:@"id"]];
         VerificatoinView.hidden=NO;
     }
@@ -191,10 +191,10 @@
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
          VerificatoinView.hidden=YES;
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Success",@"")
                                                         message:[response objectForKey:@"MSG"]
                                                        delegate:self
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:NSLocalizedString(@"OK",@"")
                                               otherButtonTitles:nil];
         [alert show];
     }

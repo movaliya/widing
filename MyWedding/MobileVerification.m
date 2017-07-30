@@ -181,7 +181,7 @@
         vcr.CustomerID=customerId;
         
         [self.navigationController pushViewController:vcr animated:YES];
-        [AppDelegate showErrorMessageWithTitle:@"Success" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Success",@"") message:[response objectForKey:@"MSG"] delegate:nil];
     }
     else
     {

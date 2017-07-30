@@ -112,7 +112,7 @@
     if ([[[response objectForKey:@"STATUS"]stringValue ] isEqualToString:@"200"])
     {
         [self GenrateNewToken];
-        [AppDelegate showErrorMessageWithTitle:@"SUCCESS" message:[response objectForKey:@"MSG"] delegate:nil];
+        [AppDelegate showErrorMessageWithTitle:NSLocalizedString(@"Success",@"") message:[response objectForKey:@"MSG"] delegate:nil];
         NSDictionary *userdata=[response valueForKey:@"DATA"];
         NSUserDefaults *currentDefaults = [NSUserDefaults standardUserDefaults];
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userdata];
